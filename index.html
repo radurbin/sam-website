@@ -1,717 +1,798 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAM YOUSUF</title>
-    <meta name="description" content="Sam Yousuf - Actor Portfolio">
+
+    <title>Sam Yousuf | Actor</title>
+    <link rel="icon" type="image/x-icon" href="https://assets.squarespace.com/universal/default-favicon.ico">
+
+    <!-- Squarespace CSS Files -->
+    <link rel="stylesheet" type="text/css" href="HannahExample/HomePage_files/site.css">
+    <link rel="stylesheet" type="text/css" href="HannahExample/HomePage_files/static.css">
 
     <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Page switching styles - using !important to override Squarespace CSS */
+        main > .page-section {
+            display: none !important;
+        }
+        main > .page-section.active {
+            display: block !important;
         }
 
-        :root {
-            --primary-color: hsl(128, 21%, 34%);
-            --light-accent: hsl(120, 15%, 17%);
-            --dark-accent: hsl(42, 51%, 89%);
-            --text-color: #333;
-            --bg-color: #fff;
-            --header-height: 80px;
-            --max-width: 1400px;
-            --page-padding: 2vw;
-        }
-
+        /* Ensure smooth transitions */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
             scroll-behavior: smooth;
         }
 
-        /* Header Styles */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: var(--header-height);
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transition: all 0.3s ease;
+        /* Navigation active state */
+        .header-nav-item--active a {
+            opacity: 0.6;
         }
 
-        header.dark {
-            background-color: rgba(40, 40, 40, 0.95);
-            color: #fff;
+        /* Gallery grid styles - masonry layout with no gaps */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            width: 100%;
         }
 
-        header.dark nav a {
-            color: #fff;
-        }
-
-        .header-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
+        .gallery-grid img {
+            width: 100%;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 var(--page-padding);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        nav {
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: opacity 0.3s ease;
-            cursor: pointer;
-        }
-
-        nav a:hover {
-            opacity: 0.7;
-        }
-
-        nav a.active {
-            text-decoration: underline;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: inherit;
-        }
-
-        /* Main Content */
-        main {
-            margin-top: var(--header-height);
-        }
-
-        section {
-            display: none;
-            min-height: calc(100vh - var(--header-height));
-            padding: 4rem var(--page-padding);
-            opacity: 0;
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        section.active {
+            object-fit: cover;
             display: block;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        /* Varied row layouts */
+        .gallery-grid img:nth-child(6),
+        .gallery-grid img:nth-child(7),
+        .gallery-grid img:nth-child(8),
+        .gallery-grid img:nth-child(9) {
+            grid-column: span 1.25;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        .section-container {
-            max-width: var(--max-width);
+        /* Media page layout - video + review rows */
+        #media-page {
+            background-color: #6b7456;
+        }
+
+        .media-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+
+        .media-three-videos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .review-text {
+            color: white;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .review-text em {
+            font-style: italic;
+        }
+
+        .more-videos-btn {
+            display: block;
+            margin: 40px auto;
+            padding: 15px 40px;
+            background-color: white;
+            color: #6b7456;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .media-row,
+            .media-three-videos {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* H&R page layout */
+        #hr-page {
+            background-color: #6b7456;
+        }
+
+        .hr-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 60px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Home Section */
-        #home {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .hr-grid .headshot-item {
             text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0;
         }
 
-        .hero-content h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: 3px;
+        .hr-grid .headshot-item.single {
+            grid-column: 1 / -1;
+            max-width: 70%;
+            margin: 0 auto;
         }
 
-        .hero-content p {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        .hero-image {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            margin: 2rem auto;
-        }
-
-        /* About Section */
-        #about .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .about-image {
+        .hr-grid img {
             width: 100%;
-            height: 500px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
-        }
-
-        /* Headshot & Resume Section */
-        #headshot-resume .hr-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        #headshot-resume h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            text-align: center;
-        }
-
-        .headshot-card {
-            background: #f5f5f5;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .headshot-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .headshot-placeholder {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .headshot-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .headshot-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            height: auto;
+            margin-bottom: 20px;
         }
 
         .download-btn {
             display: inline-block;
-            margin-top: 1rem;
-            padding: 0.8rem 2rem;
-            background-color: var(--primary-color);
-            color: white;
+            padding: 12px 30px;
+            background-color: white;
+            color: #6b7456;
             text-decoration: none;
-            border-radius: 25px;
-            transition: background-color 0.3s ease;
-        }
-
-        .download-btn:hover {
-            background-color: var(--light-accent);
-        }
-
-        /* Videos Section */
-        #videos h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            text-align: center;
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .video-card {
-            background: #f5f5f5;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .video-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .video-placeholder {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-        }
-
-        .video-info {
-            padding: 1.5rem;
-        }
-
-        .video-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .video-info p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        /* Contact Section */
-        #contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            text-align: center;
-        }
-
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--text-color);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            padding: 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-family: inherit;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .submit-btn {
-            padding: 1rem 2rem;
-            background-color: var(--primary-color);
-            color: white;
             border: none;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s ease;
         }
 
-        .submit-btn:hover {
-            background-color: var(--light-accent);
+        @media (max-width: 768px) {
+            .hr-grid {
+                grid-template-columns: 1fr;
+            }
+            .hr-grid .headshot-item.single {
+                max-width: 100%;
+            }
         }
 
-        .contact-info {
-            margin-top: 3rem;
+        /* About page layout */
+        .about-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            padding: 60px 20px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            padding: 60px;
+            max-width: 1200px;
+            background-color: #d4c4a8;
+            align-items: start;
+        }
+
+        .about-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5em;
+            line-height: 1.6;
+            color: #3d3d3d;
+        }
+
+        .learn-more-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #6b7456;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Connect page layout */
+        .connect-container {
+            background-color: #f5f0e8;
+            padding: 60px 20px;
+        }
+
+        .connect-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .connect-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .connect-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer 3-column layout */
+        footer {
+            background-color: #6b7456;
+            color: white;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 40px;
+        }
+
+        .footer-left {
+            text-align: left;
+        }
+
+        .footer-center {
             text-align: center;
         }
 
-        .contact-info p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+        .footer-right {
+            text-align: right;
         }
 
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-color);
+        .footer-grid h2,
+        .footer-grid h4 {
+            margin: 0;
             color: white;
-            border-radius: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center !important;
+            }
+            .footer-left,
+            .footer-right {
+                text-align: center !important;
+            }
+        }
+
+        /* Ensure footer is always visible */
+        footer {
+            display: block !important;
+        }
+
+        /* Fix fieldset borders on connect form */
+        .react-form-contents fieldset {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .react-form-contents legend {
+            padding: 0;
+            margin-bottom: 10px;
+        }
+
+        /* Image placeholders */
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .social-links a:hover {
-            transform: scale(1.1);
-            background-color: var(--light-accent);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav {
-                position: fixed;
-                top: var(--header-height);
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - var(--header-height));
-                background-color: rgba(255, 255, 255, 0.98);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1rem;
-                transition: left 0.3s ease;
-            }
-
-            nav.open {
-                left: 0;
-            }
-
-            header.dark nav {
-                background-color: rgba(40, 40, 40, 0.98);
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            #about .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .video-grid {
-                grid-template-columns: 1fr;
-            }
-
-            #headshot-resume .hr-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: white;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
             text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        footer p {
-            margin: 0;
         }
     </style>
 </head>
-<body>
-    <!-- Header -->
-    <header id="main-header" class="dark">
-        <div class="header-container">
-            <a href="#home" class="logo" onclick="showSection('home')">SAM YOUSUF</a>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
-            <nav id="main-nav">
-                <a href="#home" class="nav-link active" onclick="showSection('home')">Home</a>
-                <a href="#about" class="nav-link" onclick="showSection('about')">About</a>
-                <a href="#headshot-resume" class="nav-link" onclick="showSection('headshot-resume')">H+R</a>
-                <a href="#videos" class="nav-link" onclick="showSection('videos')">Media</a>
-                <a href="#contact" class="nav-link" onclick="showSection('contact')">Contact</a>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Home Section -->
-        <section id="home" class="active">
-            <div class="section-container">
-                <div class="hero-content">
-                    <div class="hero-image"></div>
-                    <h1>SAM YOUSUF</h1>
-                    <p>Actor • Performer • Artist</p>
-                </div>
-            </div>
-        </section>
+<body id="collection-6952df88afb6a1727f7097df" class="form-use-theme-colors form-field-style-solid form-field-shape-custom form-field-border-none form-field-checkbox-type-button form-field-checkbox-fill-solid form-field-checkbox-color-normal form-field-checkbox-shape-custom form-field-checkbox-layout-fit form-field-radio-type-button form-field-radio-fill-solid form-field-radio-color-normal form-field-radio-shape-custom form-field-radio-layout-fit form-field-survey-fill-solid form-field-survey-color-normal form-field-survey-shape-custom form-field-hover-focus-opacity form-submit-button-style-spinner tweak-portfolio-grid-overlay-width-full tweak-portfolio-grid-overlay-height-small tweak-portfolio-grid-overlay-image-aspect-ratio-43-four-three tweak-portfolio-grid-overlay-text-placement-center tweak-portfolio-grid-overlay-show-text-after-hover image-block-poster-text-alignment-center image-block-card-content-position-center image-block-card-text-alignment-left image-block-overlap-content-position-center image-block-overlap-text-alignment-left image-block-collage-content-position-top image-block-collage-text-alignment-left image-block-stack-text-alignment-left tweak-blog-single-column-width-inset tweak-blog-single-column-text-alignment-center tweak-blog-single-column-image-placement-above tweak-blog-single-column-delimiter-bullet tweak-blog-single-column-read-more-style-show tweak-blog-single-column-primary-meta-categories tweak-blog-single-column-secondary-meta-date tweak-blog-single-column-meta-position-top tweak-blog-single-column-content-excerpt-and-title tweak-blog-item-width-narrow tweak-blog-item-text-alignment-left tweak-blog-item-meta-position-above-title tweak-blog-item-show-categories tweak-blog-item-show-date tweak-blog-item-show-author-name tweak-blog-item-show-author-profile tweak-blog-item-delimiter-dash primary-button-style-solid primary-button-shape-custom secondary-button-style-outline secondary-button-shape-custom tertiary-button-style-outline tertiary-button-shape-underline tweak-events-stacked-width-inset tweak-events-stacked-height-small tweak-events-stacked-show-past-events tweak-events-stacked-show-thumbnails tweak-events-stacked-thumbnail-size-32-standard tweak-events-stacked-date-style-side-tag tweak-events-stacked-show-time tweak-events-stacked-show-location tweak-events-stacked-ical-gcal-links tweak-events-stacked-show-excerpt tweak-blog-basic-grid-width-inset tweak-blog-basic-grid-image-aspect-ratio-32-standard tweak-blog-basic-grid-text-alignment-center tweak-blog-basic-grid-delimiter-bullet tweak-blog-basic-grid-image-placement-above tweak-blog-basic-grid-read-more-style-show tweak-blog-basic-grid-primary-meta-categories tweak-blog-basic-grid-secondary-meta-date tweak-blog-basic-grid-excerpt-show header-overlay-alignment-center tweak-portfolio-index-background-link-format-stacked tweak-portfolio-index-background-width-full-bleed tweak-portfolio-index-background-height-large tweak-portfolio-index-background-vertical-alignment-middle tweak-portfolio-index-background-horizontal-alignment-center tweak-portfolio-index-background-delimiter-none tweak-portfolio-index-background-animation-type-fade tweak-portfolio-index-background-animation-duration-medium tweak-portfolio-hover-follow-layout-inline tweak-portfolio-hover-follow-delimiter-forward-slash tweak-portfolio-hover-follow-animation-type-fade tweak-portfolio-hover-follow-animation-duration-medium tweak-portfolio-hover-static-layout-stacked tweak-portfolio-hover-static-delimiter-forward-slash tweak-portfolio-hover-static-animation-type-scale-up tweak-portfolio-hover-static-animation-duration-medium tweak-blog-alternating-side-by-side-width-inset tweak-blog-alternating-side-by-side-image-aspect-ratio-11-square tweak-blog-alternating-side-by-side-text-alignment-left tweak-blog-alternating-side-by-side-read-more-style-show tweak-blog-alternating-side-by-side-image-text-alignment-middle tweak-blog-alternating-side-by-side-delimiter-bullet tweak-blog-alternating-side-by-side-meta-position-top tweak-blog-alternating-side-by-side-primary-meta-categories tweak-blog-alternating-side-by-side-secondary-meta-date tweak-blog-alternating-side-by-side-excerpt-show tweak-global-animations-complexity-level-detailed tweak-global-animations-animation-style-fade tweak-global-animations-animation-type-none tweak-global-animations-animation-curve-ease tweak-blog-masonry-width-full tweak-blog-masonry-text-alignment-center tweak-blog-masonry-primary-meta-categories tweak-blog-masonry-secondary-meta-date tweak-blog-masonry-meta-position-top tweak-blog-masonry-read-more-style-show tweak-blog-masonry-delimiter-space tweak-blog-masonry-image-placement-above tweak-blog-masonry-excerpt-show header-width-inset tweak-transparent-header tweak-fixed-header-style-scroll-back tweak-blog-side-by-side-width-inset tweak-blog-side-by-side-image-placement-left tweak-blog-side-by-side-image-aspect-ratio-11-square tweak-blog-side-by-side-primary-meta-categories tweak-blog-side-by-side-secondary-meta-date tweak-blog-side-by-side-meta-position-top tweak-blog-side-by-side-text-alignment-left tweak-blog-side-by-side-image-text-alignment-middle tweak-blog-side-by-side-read-more-style-show tweak-blog-side-by-side-delimiter-bullet tweak-blog-side-by-side-excerpt-show tweak-portfolio-grid-basic-width-inset tweak-portfolio-grid-basic-height-medium tweak-portfolio-grid-basic-image-aspect-ratio-43-four-three tweak-portfolio-grid-basic-text-alignment-left tweak-portfolio-grid-basic-hover-effect-zoom hide-opentable-icons opentable-style-dark tweak-product-quick-view-button-style-floating tweak-product-quick-view-button-position-bottom tweak-product-quick-view-lightbox-excerpt-display-truncate tweak-product-quick-view-lightbox-show-arrows tweak-product-quick-view-lightbox-show-close-button tweak-product-quick-view-lightbox-controls-weight-light native-currency-code-usd collection-type-page collection-layout-default homepage mobile-style-available sqs-seven-one">
 
-        <!-- About Section -->
-        <section id="about">
-            <div class="section-container">
-                <div class="about-content">
-                    <div class="about-text">
-                        <h2>About Sam</h2>
-                        <p>Sam Yousuf is a talented and versatile actor with a passion for storytelling. With years of experience in theater, film, and television, Sam brings depth and authenticity to every role.</p>
-                        <p>Born and raised with a love for the performing arts, Sam has trained extensively in various acting methods and continues to refine their craft through ongoing education and diverse performance opportunities.</p>
-                        <p>Sam's dedication to the art of acting is evident in their commitment to understanding characters from the inside out, creating memorable performances that resonate with audiences.</p>
-                        <p>When not on stage or in front of the camera, Sam enjoys exploring new creative outlets, studying different cultures, and collaborating with fellow artists to push the boundaries of performance art.</p>
-                    </div>
-                    <div class="about-image"></div>
-                </div>
-            </div>
-        </section>
+    <div id="siteWrapper" class="clearfix site-wrapper">
 
-        <!-- Headshot & Resume Section -->
-        <section id="headshot-resume">
-            <div class="section-container">
-                <h2>Headshots & Resume</h2>
-                <div class="hr-grid">
-                    <div class="headshot-card">
-                        <div class="headshot-placeholder"></div>
-                        <div class="headshot-info">
-                            <h3>Professional Headshot 1</h3>
-                            <p>Commercial Look</p>
-                        </div>
-                    </div>
-                    <div class="headshot-card">
-                        <div class="headshot-placeholder"></div>
-                        <div class="headshot-info">
-                            <h3>Professional Headshot 2</h3>
-                            <p>Theatrical Look</p>
-                        </div>
-                    </div>
-                    <div class="headshot-card">
-                        <div class="headshot-placeholder"></div>
-                        <div class="headshot-info">
-                            <h3>Professional Headshot 3</h3>
-                            <p>Character Look</p>
-                        </div>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="#" class="download-btn">Download Resume (PDF)</a>
-                </div>
-            </div>
-        </section>
+        <!-- SVG Symbol Definitions -->
+        <svg style="display:none" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <symbol id="instagram-unauth-icon" viewBox="0 0 64 64">
+                <path d="M46.91,25.816c-0.073-1.597-0.326-2.687-0.697-3.641c-0.383-0.986-0.896-1.823-1.73-2.657c-0.834-0.834-1.67-1.347-2.657-1.73c-0.954-0.371-2.045-0.624-3.641-0.697C36.585,17.017,36.074,17,32,17s-4.585,0.017-6.184,0.09c-1.597,0.073-2.687,0.326-3.641,0.697c-0.986,0.383-1.823,0.896-2.657,1.73c-0.834,0.834-1.347,1.67-1.73,2.657c-0.371,0.954-0.624,2.045-0.697,3.641C17.017,27.415,17,27.926,17,32c0,4.074,0.017,4.585,0.09,6.184c0.073,1.597,0.326,2.687,0.697,3.641c0.383,0.986,0.896,1.823,1.73,2.657c0.834,0.834,1.67,1.347,2.657,1.73c0.954,0.371,2.045,0.624,3.641,0.697C27.415,46.983,27.926,47,32,47s4.585-0.017,6.184-0.09c1.597-0.073,2.687-0.326,3.641-0.697c0.986-0.383,1.823-0.896,2.657-1.73c0.834-0.834,1.347-1.67,1.73-2.657c0.371-0.954,0.624-2.045,0.697-3.641C46.983,36.585,47,36.074,47,32S46.983,27.415,46.91,25.816z M44.21,38.061c-0.067,1.462-0.311,2.257-0.516,2.785c-0.272,0.7-0.597,1.2-1.122,1.725c-0.525,0.525-1.025,0.85-1.725,1.122c-0.529,0.205-1.323,0.45-2.785,0.516c-1.581,0.072-2.056,0.087-6.061,0.087s-4.48-0.015-6.061-0.087c-1.462-0.067-2.257-0.311-2.785-0.516c-0.7-0.272-1.2-0.597-1.725-1.122c-0.525-0.525-0.85-1.025-1.122-1.725c-0.205-0.529-0.45-1.323-0.516-2.785c-0.072-1.582-0.087-2.056-0.087-6.061s0.015-4.48,0.087-6.061c0.067-1.462,0.311-2.257,0.516-2.785c0.272-0.7,0.597-1.2,1.122-1.725c0.525-0.525,1.025-0.85,1.725-1.122c0.529-0.205,1.323-0.45,2.785-0.516c1.582-0.072,2.056-0.087,6.061-0.087s4.48,0.015,6.061,0.087c1.462,0.067,2.257,0.311,2.785,0.516c0.7,0.272,1.2,0.597,1.725,1.122c0.525,0.525,0.85,1.025,1.122,1.725c0.205,0.529,0.45,1.323,0.516,2.785c0.072,1.582,0.087,2.056,0.087,6.061S44.282,36.48,44.21,38.061z M32,24.297c-4.254,0-7.703,3.449-7.703,7.703c0,4.254,3.449,7.703,7.703,7.703c4.254,0,7.703-3.449,7.703-7.703C39.703,27.746,36.254,24.297,32,24.297z M32,37c-2.761,0-5-2.239-5-5c0-2.761,2.239-5,5-5s5,2.239,5,5C37,34.761,34.761,37,32,37z M40.007,22.193c-0.994,0-1.8,0.806-1.8,1.8c0,0.994,0.806,1.8,1.8,1.8c0.994,0,1.8-0.806,1.8-1.8C41.807,22.999,41.001,22.193,40.007,22.193z"/>
+            </symbol>
+            <symbol id="instagram-unauth-mask" viewBox="0 0 64 64">
+                <path d="M43.693,23.153c-0.272-0.7-0.597-1.2-1.122-1.725c-0.525-0.525-1.025-0.85-1.725-1.122c-0.529-0.205-1.323-0.45-2.785-0.517c-1.582-0.072-2.056-0.087-6.061-0.087s-4.48,0.015-6.061,0.087c-1.462,0.067-2.257,0.311-2.785,0.517c-0.7,0.272-1.2,0.597-1.725,1.122c-0.525,0.525-0.85,1.025-1.122,1.725c-0.205,0.529-0.45,1.323-0.516,2.785c-0.072,1.582-0.087,2.056-0.087,6.061s0.015,4.48,0.087,6.061c0.067,1.462,0.311,2.257,0.516,2.785c0.272,0.7,0.597,1.2,1.122,1.725s1.025,0.85,1.725,1.122c0.529,0.205,1.323,0.45,2.785,0.516c1.581,0.072,2.056,0.087,6.061,0.087s4.48-0.015,6.061-0.087c1.462-0.067,2.257-0.311,2.785-0.516c0.7-0.272,1.2-0.597,1.725-1.122s0.85-1.025,1.122-1.725c0.205-0.529,0.45-1.323,0.516-2.785c0.072-1.582,0.087-2.056,0.087-6.061s-0.015-4.48-0.087-6.061C44.143,24.476,43.899,23.682,43.693,23.153z M32,39.703c-4.254,0-7.703-3.449-7.703-7.703s3.449-7.703,7.703-7.703s7.703,3.449,7.703,7.703S36.254,39.703,32,39.703z M40.007,25.793c-0.994,0-1.8-0.806-1.8-1.8c0-0.994,0.806-1.8,1.8-1.8c0.994,0,1.8,0.806,1.8,1.8C41.807,24.987,41.001,25.793,40.007,25.793z M0,0v64h64V0H0z M46.91,38.184c-0.073,1.597-0.326,2.687-0.697,3.641c-0.383,0.986-0.896,1.823-1.73,2.657c-0.834,0.834-1.67,1.347-2.657,1.73c-0.954,0.371-2.044,0.624-3.641,0.697C36.585,46.983,36.074,47,32,47s-4.585-0.017-6.184-0.09c-1.597-0.073-2.687-0.326-3.641-0.697c-0.986-0.383-1.823-0.896-2.657-1.73c-0.834-0.834-1.347-1.67-1.73-2.657c-0.371-0.954-0.624-2.044-0.697-3.641C17.017,36.585,17,36.074,17,32c0-4.074,0.017-4.585,0.09-6.185c0.073-1.597,0.326-2.687,0.697-3.641c0.383-0.986,0.896-1.823,1.73-2.657c0.834-0.834,1.67-1.347,2.657-1.73c0.954-0.371,2.045-0.624,3.641-0.697C27.415,17.017,27.926,17,32,17s4.585,0.017,6.184,0.09c1.597,0.073,2.687,0.326,3.641,0.697c0.986,0.383,1.823,0.896,2.657,1.73c0.834,0.834,1.347,1.67,1.73,2.657c0.371,0.954,0.624,2.044,0.697,3.641C46.983,27.415,47,27.926,47,32C47,36.074,46.983,36.585,46.91,38.184z M32,27c-2.761,0-5,2.239-5,5s2.239,5,5,5s5-2.239,5-5S34.761,27,32,27z"/>
+            </symbol>
+            <symbol id="youtube-unauth-icon" viewBox="0 0 64 64">
+                <path d="M46.7,26c0,0-0.3-2.1-1.2-3c-1.1-1.2-2.4-1.2-3-1.3C38.3,21.4,32,21.4,32,21.4h0c0,0-6.3,0-10.5,0.3c-0.6,0.1-1.9,0.1-3,1.3c-0.9,0.9-1.2,3-1.2,3S17,28.4,17,30.7v2.1c0,2.3,0.3,4.7,0.3,4.7s0.3,2.1,1.2,3c1.1,1.2,2.6,1.2,3.3,1.3c2.4,0.2,10.2,0.3,10.2,0.3s6.3,0,10.5-0.3c0.6-0.1,1.9-0.1,3-1.3c0.9-0.9,1.2-3,1.2-3s0.3-2.3,0.3-4.7v-2.1C47,28.4,46.7,26,46.7,26z M28.9,35.9l0-8.4l8.1,4.2L28.9,35.9z"/>
+            </symbol>
+            <symbol id="youtube-unauth-mask" viewBox="0 0 64 64">
+                <path d="M0,0v64h64V0H0z M47,32.7c0,2.3-0.3,4.7-0.3,4.7s-0.3,2.1-1.2,3c-1.1,1.2-2.4,1.2-3,1.3C38.3,42.1,32,42.1,32,42.1s-7.8-0.1-10.2-0.3c-0.7-0.1-2.2-0.1-3.3-1.3c-0.9-0.9-1.2-3-1.2-3S17,35.1,17,32.7v-2.1c0-2.3,0.3-4.7,0.3-4.7s0.3-2.1,1.2-3c1.1-1.2,2.4-1.2,3-1.3c4.2-0.3,10.5-0.3,10.5-0.3h0c0,0,6.3,0,10.5,0.3c0.6,0.1,1.9,0.1,3,1.3c0.9,0.9,1.2,3,1.2,3s0.3,2.3,0.3,4.7V32.7z M28.9,35.9l8.1-4.2l-8.1-4.2L28.9,35.9z"/>
+            </symbol>
+        </svg>
 
-        <!-- Videos Section -->
-        <section id="videos">
-            <div class="section-container">
-                <h2>Media & Showreel</h2>
-                <div class="video-grid">
-                    <div class="video-card">
-                        <div class="video-placeholder">▶</div>
-                        <div class="video-info">
-                            <h3>Demo Reel 2024</h3>
-                            <p>A compilation of recent performances showcasing range and versatility.</p>
+        <!-- Header -->
+        <header data-test="header" id="header" class="black header theme-col--primary" data-section-theme="black" style="
+            --headerBorderColor: hsla(var(--black-hsl), 1);
+            --solidHeaderBackgroundColor: hsla(var(--white-hsl), 1);
+            --solidHeaderNavigationColor: hsla(var(--black-hsl), 1);
+            --gradientHeaderBackgroundColor: hsla(var(--white-hsl), 1);
+            --gradientHeaderNavigationColor: hsla(var(--black-hsl), 1);
+        ">
+            <div class="header-announcement-bar-wrapper">
+                <a href="#page" class="header-skip-link sqs-button-element--primary">Skip to Content</a>
+
+                <div class="header-border" data-header-style="dynamic" data-header-border="false"></div>
+                <div class="header-dropshadow" data-header-style="dynamic" data-header-dropshadow="false"></div>
+
+                <div class="header-inner container--fluid header-mobile-layout-logo-left-nav-right header-layout-nav-right">
+                    <div class="header-background theme-bg--primary"></div>
+
+                    <div class="header-display-desktop" data-content-field="site-title">
+                        <div class="header-title-nav-wrapper">
+                            <!-- Title -->
+                            <div class="header-title" data-animation-role="header-element">
+                                <div class="header-title-text">
+                                    <a id="site-title" href="#" onclick="showPage('home'); return false;" data-animation-role="header-element">Sam Yousuf</a>
+                                </div>
+                            </div>
+
+                            <!-- Nav -->
+                            <div class="header-nav">
+                                <div class="header-nav-wrapper">
+                                    <nav class="header-nav-list" id="main-nav">
+                                        <div class="header-nav-item header-nav-item--collection header-nav-item--active header-nav-item--homepage" data-page="home">
+                                            <a href="#" onclick="showPage('home'); return false;" data-animation-role="header-element">Home</a>
+                                        </div>
+                                        <div class="header-nav-item header-nav-item--collection" data-page="about">
+                                            <a href="#" onclick="showPage('about'); return false;" data-animation-role="header-element">About</a>
+                                        </div>
+                                        <div class="header-nav-item header-nav-item--collection" data-page="hr">
+                                            <a href="#" onclick="showPage('hr'); return false;" data-animation-role="header-element">H&R</a>
+                                        </div>
+                                        <div class="header-nav-item header-nav-item--collection" data-page="media">
+                                            <a href="#" onclick="showPage('media'); return false;" data-animation-role="header-element">Media</a>
+                                        </div>
+                                        <div class="header-nav-item header-nav-item--collection" data-page="gallery">
+                                            <a href="#" onclick="showPage('gallery'); return false;" data-animation-role="header-element">Gallery</a>
+                                        </div>
+                                        <div class="header-nav-item header-nav-item--collection" data-page="connect">
+                                            <a href="#" onclick="showPage('connect'); return false;" data-animation-role="header-element">Connect</a>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-placeholder">▶</div>
-                        <div class="video-info">
-                            <h3>Featured Scene - Drama</h3>
-                            <p>Emotional dramatic performance from recent theater production.</p>
-                        </div>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-placeholder">▶</div>
-                        <div class="video-info">
-                            <h3>Commercial Work</h3>
-                            <p>Selection of commercial and advertising appearances.</p>
-                        </div>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-placeholder">▶</div>
-                        <div class="video-info">
-                            <h3>Behind the Scenes</h3>
-                            <p>Glimpse into the creative process and on-set experiences.</p>
+
+                        <!-- Social Icons (Desktop) -->
+                        <div class="header-actions header-actions--right">
+                            <div class="header-actions-action header-actions-action--social">
+                                <a class="icon icon--fill header-icon header-icon-border-shape-circle header-icon-border-style-outline" style="box-shadow: 0px 0px 0px 1px inset" href="http://instagram.com/samyousuf" target="_blank" aria-label="Instagram">
+                                    <svg viewBox="23 23 64 64">
+                                        <use xlink:href="#instagram-unauth-icon" width="110" height="110"></use>
+                                    </svg>
+                                </a>
+                                <a class="icon icon--fill header-icon header-icon-border-shape-circle header-icon-border-style-outline" style="box-shadow: 0px 0px 0px 1px inset" href="https://www.youtube.com/@samyousuf" target="_blank" aria-label="YouTube">
+                                    <svg viewBox="23 23 64 64">
+                                        <use xlink:href="#youtube-unauth-icon" width="110" height="110"></use>
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </header>
 
-        <!-- Contact Section -->
-        <section id="contact">
-            <div class="section-container">
-                <h2>Get In Touch</h2>
-                <div class="contact-content">
-                    <form class="contact-form" onsubmit="handleSubmit(event)">
-                        <div class="form-group">
-                            <label for="name">Name *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
+        <!-- Main Content -->
+        <main id="page" class="container" role="main">
 
-                    <div class="contact-info">
-                        <p><strong>Email:</strong> sam.yousuf@email.com</p>
-                        <p><strong>Phone:</strong> (555) 123-4567</p>
-                        <p><strong>Location:</strong> Los Angeles, CA</p>
+            <!-- HOME PAGE -->
+            <div id="home-page" class="page-section active">
+                <article class="sections" id="sections" data-page-sections="">
+                    <section data-test="page-section" data-section-theme="black" class="page-section full-bleed-section homepage-section vertical-alignment-middle horizontal-alignment-center content-collection" data-section-id="6952df88afb6a1727f7097df" style="padding-top: calc(2.5vw + 50px); padding-bottom: 2.5vw;">
+                        <div class="section-border" style="border-width: 0px;"></div>
+                        <div class="section-background" style="background-color: #8b9a7d; opacity: 1;"></div>
+                        <div class="section-background-overlay" style="opacity: 0.25;"></div>
+                        <div class="content-wrapper" style="padding-top: calc(2.5vw / 2); padding-bottom: calc(2.5vw / 2);">
+                            <div class="content" style="min-height: 75vh;">
+                                <!-- Empty - no text on home page -->
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
 
-                        <div class="social-links">
-                            <a href="#" title="Instagram">📷</a>
-                            <a href="#" title="YouTube">▶</a>
-                            <a href="#" title="Twitter">🐦</a>
-                            <a href="#" title="LinkedIn">💼</a>
+            <!-- ABOUT PAGE -->
+            <div id="about-page" class="page-section">
+                <article class="sections" data-page-sections="">
+                    <section data-test="page-section" class="page-section" style="padding: 3vw;">
+                        <div class="content-wrapper">
+                            <div class="content">
+                                <div class="about-container">
+                                <div class="about-content">
+                                    <div class="about-image-wrapper">
+                                        <div class="about-image" style="background-color: #c9b89a; aspect-ratio: 3/4;">
+                                            <div class="image-placeholder">Photo Placeholder</div>
+                                        </div>
+                                    </div>
+                                    <div class="about-text">
+                                        <p class="" style="white-space:pre-wrap;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        <p class="" style="white-space:pre-wrap;">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                        <p class="" style="white-space:pre-wrap;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                        <p class="" style="white-space:pre-wrap;">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+                                        <p class="" style="white-space:pre-wrap;">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
+                                        <p class="" style="white-space:pre-wrap;">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                                        <a href="#" class="learn-more-btn">Learn More</a>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
+
+            <!-- H&R PAGE -->
+            <div id="hr-page" class="page-section">
+                <article class="sections" data-page-sections="">
+                    <section data-test="page-section" class="page-section">
+                        <div class="content-wrapper">
+                            <div class="content">
+                                <div class="hr-grid">
+                                    <div class="headshot-item">
+                                        <div style="background-color: #8a9579; aspect-ratio: 3/4; margin-bottom: 20px;">
+                                            <div class="image-placeholder">Headshot 1</div>
+                                        </div>
+                                        <a href="#" download class="download-btn">Download Headshot 1</a>
+                                    </div>
+                                    <div class="headshot-item">
+                                        <div style="background-color: #d9d4c8; aspect-ratio: 8.5/11; margin-bottom: 20px;">
+                                            <div class="image-placeholder">Resume</div>
+                                        </div>
+                                        <a href="#" download class="download-btn">Download Resume</a>
+                                    </div>
+                                    <div class="headshot-item single">
+                                        <div style="background-color: #9aa88c; aspect-ratio: 3/4; margin-bottom: 20px;">
+                                            <div class="image-placeholder">Headshot 2</div>
+                                        </div>
+                                        <a href="#" download class="download-btn">Download Headshot 2</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
+
+            <!-- MEDIA PAGE -->
+            <div id="media-page" class="page-section">
+                <article class="sections" data-page-sections="">
+                    <section data-test="page-section" class="page-section" style="padding: 60px 40px;">
+                        <div class="content-wrapper">
+                            <div class="content" style="max-width: 1200px; margin: 0 auto;">
+
+                                <!-- Row 1: Video + Review -->
+                                <div class="media-row">
+                                    <div class="video-wrapper" style="background-color: #4a5240;">
+                                        <div class="image-placeholder">Video Placeholder</div>
+                                    </div>
+                                    <div class="review-text">
+                                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Exceptional performance that captivated the entire audience."</p>
+                                        <p style="margin-top: 10px;">- <em>Review Publication</em></p>
+                                        <a href="#" class="download-btn" style="display: inline-block; margin-top: 20px;">Click to Watch Now</a>
+                                    </div>
+                                </div>
+
+                                <!-- Row 2: Review + Video -->
+                                <div class="media-row">
+                                    <div class="review-text">
+                                        <p>"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A truly moving and powerful performance."</p>
+                                        <p style="margin-top: 10px;">- <em>Theatre Review</em></p>
+                                    </div>
+                                    <div class="video-wrapper" style="background-color: #4a5240;">
+                                        <div class="image-placeholder">Video Placeholder</div>
+                                    </div>
+                                </div>
+
+                                <!-- Row 3: Video + Review -->
+                                <div class="media-row">
+                                    <div class="video-wrapper" style="background-color: #4a5240;">
+                                        <div class="image-placeholder">Video Placeholder</div>
+                                    </div>
+                                    <div class="review-text">
+                                        <p>"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Outstanding comedic timing and vocal performance throughout."</p>
+                                        <p style="margin-top: 10px;">- <em>Performance Review</em></p>
+                                        <a href="#" class="download-btn" style="display: inline-block; margin-top: 20px;">Click to Watch Now</a>
+                                    </div>
+                                </div>
+
+                                <!-- Row 4: Review + Video -->
+                                <div class="media-row">
+                                    <div class="review-text">
+                                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. An unforgettable theatrical moment.</p>
+                                    </div>
+                                    <div class="video-wrapper" style="background-color: #4a5240;">
+                                        <div class="image-placeholder">Video Placeholder</div>
+                                    </div>
+                                </div>
+
+                                <!-- Row of 3 videos without text -->
+                                <div class="media-three-videos" style="margin-top: 80px;">
+                                    <div class="video-wrapper" style="background-color: #4a5240;">
+                                        <div class="image-placeholder">Video Placeholder</div>
+                                    </div>
+                                    <div class="video-wrapper" style="background-color: #4a5240;">
+                                        <div class="image-placeholder">Video Placeholder</div>
+                                    </div>
+                                    <div class="video-wrapper" style="background-color: #4a5240;">
+                                        <div class="image-placeholder">Video Placeholder</div>
+                                    </div>
+                                </div>
+
+                                <!-- More Videos Button -->
+                                <button class="more-videos-btn">More Videos</button>
+
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
+
+            <!-- GALLERY PAGE -->
+            <div id="gallery-page" class="page-section">
+                <article class="sections" data-page-sections="">
+                    <section data-test="page-section" class="page-section" style="padding: 0; padding-top: 80px;">
+                        <div class="content-wrapper">
+                            <div class="content">
+                                <div class="gallery-grid">
+                                    <div style="background-color: #8b9575; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #a8b092; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #7a8568; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #9aa687; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #6f7d5e; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #b5c09d; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #8a9679; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #a0ab8e; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #7d8b6c; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #9ba88a; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #737f64; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #a8b597; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #869272; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #96a285; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #7b8869; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #a3af93; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #889477; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #929e82; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #778366; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #a5b190; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #8a967a; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #94a07e; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #79856b; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #a1ad8d; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #8c9875; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #969f88; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #7c8a70; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #a7b394; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #8e9a7c; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <div style="background-color: #98a486; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
+
+            <!-- CONNECT PAGE -->
+            <div id="connect-page" class="page-section">
+                <article class="sections" data-page-sections="">
+                    <section data-test="page-section" class="page-section">
+                        <div class="content-wrapper">
+                            <div class="content">
+                                <div class="connect-container">
+                                    <div class="connect-content">
+                                        <div class="connect-form-area">
+                                            <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: #3d3d3d;">Let's Work Together!</h2>
+                                            <form class="react-form-contents" novalidate="">
+                                        <div class="field-list" style="color: #3d3d3d;">
+                                            <fieldset class="form-item fields name" id="name-field" style="margin-bottom: 20px;">
+                                                <legend>
+                                                    <div class="title">
+                                                        <span>Name</span>
+                                                        <span class="description required">(required)</span>
+                                                    </div>
+                                                </legend>
+                                                <div class="field first-name" style="margin-bottom: 10px;">
+                                                    <label class="caption" for="fname-field" style="color: #3d3d3d;">
+                                                        <div class="caption-text">First Name</div>
+                                                    </label>
+                                                    <input aria-required="true" autocomplete="given-name" id="fname-field" name="fname" type="text" value="" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc;">
+                                                </div>
+                                                <div class="field last-name">
+                                                    <label class="caption" for="lname-field" style="color: #3d3d3d;">
+                                                        <div class="caption-text">Last Name</div>
+                                                    </label>
+                                                    <input aria-required="true" autocomplete="family-name" id="lname-field" name="lname" type="text" value="" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc;">
+                                                </div>
+                                            </fieldset>
+
+                                            <div class="form-item field email required" id="email-field" style="margin-bottom: 20px;">
+                                                <label for="email-input" class="title" style="color: #3d3d3d;">
+                                                    <div>
+                                                        <span>Email</span>
+                                                        <span class="description required">(required)</span>
+                                                    </div>
+                                                </label>
+                                                <input aria-required="true" autocomplete="email" id="email-input" placeholder="" type="email" value="" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc;">
+                                            </div>
+
+                                            <fieldset class="form-item fields phone" id="phone-field" style="margin-bottom: 20px;">
+                                                <legend style="color: #3d3d3d;">
+                                                    <div class="title">
+                                                        <span>Phone</span>
+                                                    </div>
+                                                </legend>
+                                                <div class="field">
+                                                    <input inputmode="numeric" id="phone-input" autocomplete="tel-national" type="text" value="" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc;">
+                                                </div>
+                                            </fieldset>
+
+                                            <div class="form-item field textarea required" id="message-field" style="margin-bottom: 20px;">
+                                                <label for="message-input" class="title" style="color: #3d3d3d;">
+                                                    <div>
+                                                        <span>Message</span>
+                                                        <span class="description required">(required)</span>
+                                                    </div>
+                                                </label>
+                                                <textarea id="message-input" placeholder="" style="width: 100%; padding: 10px; margin-top: 5px; min-height: 150px; border: 1px solid #ccc;"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-button-wrapper">
+                                            <button type="submit" class="button sqs-system-button sqs-editable-button form-submit-button sqs-button-element--primary" style="padding: 15px 40px; font-size: 16px; cursor: pointer; background-color: #6b7456; color: white; border: none;">
+                                                <span class="form-submit-button-label">Submit</span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                        </div>
+                                        <div class="connect-image">
+                                            <div style="background-color: #a5b08f; aspect-ratio: 3/4;">
+                                                <div class="image-placeholder">Photo Placeholder</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="sections" id="footer-sections" data-footer-sections="">
+            <section data-test="page-section" class="page-section">
+                <div class="content-wrapper">
+                    <div class="content">
+                        <div class="footer-grid">
+                            <!-- Left: Name -->
+                            <div class="footer-left">
+                                <h2 style="font-size: 1.2rem; margin: 0;">Sam Yousuf</h2>
+                            </div>
+
+                            <!-- Center: Social Icons -->
+                            <div class="footer-center">
+                                <nav class="sqs-svg-icon--list" style="display: inline-flex; gap: 15px;">
+                                    <a href="http://instagram.com/samyousuf" target="_blank" class="sqs-svg-icon--wrapper instagram-unauth" aria-label="Instagram">
+                                        <div>
+                                            <svg class="sqs-svg-icon--social" viewBox="0 0 64 64" style="width: 24px; height: 24px; fill: white;">
+                                                <use class="sqs-use--icon" xlink:href="#instagram-unauth-icon"></use>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.youtube.com/@samyousuf" target="_blank" class="sqs-svg-icon--wrapper youtube-unauth" aria-label="YouTube">
+                                        <div>
+                                            <svg class="sqs-svg-icon--social" viewBox="0 0 64 64" style="width: 24px; height: 24px; fill: white;">
+                                                <use class="sqs-use--icon" xlink:href="#youtube-unauth-icon"></use>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </nav>
+                            </div>
+
+                            <!-- Right: Email -->
+                            <div class="footer-right">
+                                <h4 style="font-size: 1rem; margin: 0;">contact@samyousuf.com</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
+        </footer>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Sam Yousuf. All rights reserved.</p>
-    </footer>
+    </div>
 
-    <!-- JavaScript -->
+    <!-- Page Navigation Script -->
     <script>
-        // Navigation functionality
-        function showSection(sectionId) {
-            // Hide all sections
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                section.classList.remove('active');
+        function showPage(pageName) {
+            console.log('showPage called with:', pageName);
+
+            // Hide all pages - use more specific selector
+            const pages = document.querySelectorAll('main > .page-section');
+            console.log('Found pages:', pages.length);
+            pages.forEach(page => {
+                page.classList.remove('active');
+                page.style.display = 'none';
             });
 
-            // Show selected section
-            const targetSection = document.getElementById(sectionId);
-            if (targetSection) {
-                targetSection.classList.add('active');
+            // Show selected page
+            const selectedPage = document.getElementById(pageName + '-page');
+            console.log('Selected page:', selectedPage);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+                selectedPage.style.display = 'block';
             }
 
-            // Update active nav link
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + sectionId) {
-                    link.classList.add('active');
+            // Update navigation active states
+            const navItems = document.querySelectorAll('.header-nav-item');
+            navItems.forEach(item => {
+                if (item.getAttribute('data-page') === pageName) {
+                    item.classList.add('header-nav-item--active');
+                } else {
+                    item.classList.remove('header-nav-item--active');
                 }
             });
 
-            // Update header style based on section
-            const header = document.getElementById('main-header');
-            if (sectionId === 'home') {
-                header.classList.add('dark');
-            } else {
-                header.classList.remove('dark');
-            }
-
-            // Close mobile menu if open
-            const nav = document.getElementById('main-nav');
-            nav.classList.remove('open');
-
             // Scroll to top
-            window.scrollTo(0, 0);
-
-            return false;
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const nav = document.getElementById('main-nav');
-            nav.classList.toggle('open');
+        // Initialize - show home page on load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded');
+            showPage('home');
+        });
+
+        // Also run on page load in case DOMContentLoaded already fired
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                showPage('home');
+            });
+        } else {
+            showPage('home');
         }
-
-        // Form submission handler
-        function handleSubmit(event) {
-            event.preventDefault();
-            alert('Thank you for your message! This is a demo form. In a live website, this would send your message.');
-            event.target.reset();
-            return false;
-        }
-
-        // Handle hash changes (browser back/forward)
-        window.addEventListener('hashchange', function() {
-            const hash = window.location.hash.slice(1);
-            if (hash) {
-                showSection(hash);
-            }
-        });
-
-        // Initialize on load
-        window.addEventListener('load', function() {
-            const hash = window.location.hash.slice(1);
-            if (hash) {
-                showSection(hash);
-            } else {
-                showSection('home');
-            }
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const nav = document.getElementById('main-nav');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-
-            if (nav.classList.contains('open') &&
-                !nav.contains(event.target) &&
-                !menuBtn.contains(event.target)) {
-                nav.classList.remove('open');
-            }
-        });
     </script>
+
 </body>
 </html>
