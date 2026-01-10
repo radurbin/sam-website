@@ -13,6 +13,11 @@
     <link rel="stylesheet" type="text/css" href="static.css">
 
     <style>
+        /* Override Squarespace CSS variables */
+        :root {
+            --siteBackgroundColor: #8b9a7d !important;
+        }
+
         /* Page switching styles - using !important to override Squarespace CSS */
         main > .page-section {
             display: none !important;
@@ -318,6 +323,242 @@
             font-size: 1rem;
             text-align: center;
         }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            /* Reduce padding on mobile */
+            .about-container {
+                padding: 30px 15px;
+                min-height: auto;
+            }
+
+            .about-content {
+                padding: 30px 20px;
+                gap: 30px;
+            }
+
+            .about-text p {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            .hr-grid {
+                padding: 30px 20px;
+                gap: 30px;
+            }
+
+            #media-page .page-section {
+                padding: 30px 20px !important;
+            }
+
+            .media-row {
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+
+            .review-text {
+                font-size: 1rem;
+            }
+
+            .connect-container {
+                padding: 30px 15px;
+            }
+
+            .connect-content {
+                gap: 30px;
+            }
+
+            .footer-grid {
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .footer-grid h2 {
+                font-size: 1rem;
+            }
+
+            .footer-grid h4 {
+                font-size: 0.9rem;
+            }
+
+            /* Make buttons full width on mobile */
+            .download-btn,
+            .learn-more-btn,
+            .more-videos-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Adjust form spacing on mobile */
+            .connect-content h2 {
+                font-size: 2rem;
+            }
+
+            /* Ensure proper spacing for gallery on mobile */
+            #gallery-page .page-section {
+                padding-top: 60px !important;
+            }
+        }
+
+        /* Very small mobile devices */
+        @media (max-width: 480px) {
+            .about-content {
+                padding: 20px 15px;
+            }
+
+            .about-text p {
+                font-size: 0.9rem;
+            }
+
+            .hr-grid {
+                padding: 20px 15px;
+            }
+
+            .footer-grid {
+                padding: 15px;
+            }
+
+            .connect-content h2 {
+                font-size: 1.75rem;
+            }
+        }
+
+        /* Mobile menu styles */
+        .header-burger {
+            display: none;
+            position: relative;
+            width: 28px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 1001;
+            background: none;
+            border: none;
+            padding: 0;
+            color: inherit;
+        }
+
+        .header-burger-inner {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: currentColor;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: background-color 0.3s;
+        }
+
+        .header-burger-inner::before,
+        .header-burger-inner::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: currentColor;
+            transition: transform 0.3s;
+        }
+
+        .header-burger-inner::before {
+            top: -8px;
+        }
+
+        .header-burger-inner::after {
+            top: 8px;
+        }
+
+        .header-burger.is-active .header-burger-inner {
+            background-color: transparent;
+        }
+
+        .header-burger.is-active .header-burger-inner::before {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .header-burger.is-active .header-burger-inner::after {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .header-menu-nav-wrapper {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            z-index: 1000;
+            overflow-y: auto;
+            padding-top: 80px;
+        }
+
+        .header-menu-nav-wrapper.is-open {
+            display: block;
+        }
+
+        .header-menu-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header-menu-nav-item {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .header-menu-nav-item a {
+            display: block;
+            padding: 20px 30px;
+            text-decoration: none;
+            color: #000;
+            font-size: 1.1rem;
+        }
+
+        .header-menu-nav-item.header-nav-item--active a {
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            /* Hide desktop nav */
+            .header-display-desktop .header-nav {
+                display: none !important;
+            }
+
+            .header-display-desktop .header-actions {
+                display: none !important;
+            }
+
+            /* Show mobile burger - using multiple selectors for specificity */
+            .header-burger,
+            button.header-burger,
+            .header-title-nav-wrapper .header-burger {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+
+            /* Adjust header layout for mobile */
+            .header-title-nav-wrapper {
+                width: 100%;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+            }
+
+            /* Make sure header title doesn't take full width */
+            .header-title {
+                flex: 0 1 auto !important;
+            }
+        }
+
+        /* CRITICAL: Override any Squarespace CSS hiding the burger - must be last */
+        @media screen and (max-width: 768px) {
+            .header-display-desktop .header-title-nav-wrapper button.header-burger {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                margin-left: auto !important;
+            }
+        }
     </style>
 </head>
 
@@ -367,6 +608,11 @@
                                 </div>
                             </div>
 
+                            <!-- Mobile Hamburger -->
+                            <button class="header-burger" onclick="toggleMobileMenu()" aria-label="Open Menu">
+                                <div class="header-burger-inner"></div>
+                            </button>
+
                             <!-- Nav -->
                             <div class="header-nav">
                                 <div class="header-nav-wrapper">
@@ -413,6 +659,30 @@
                 </div>
             </div>
         </header>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="header-menu-nav-wrapper" id="mobileMenu">
+            <nav class="header-menu-nav-list">
+                <div class="header-menu-nav-item header-nav-item--active" data-page="home">
+                    <a href="#" onclick="showPageAndCloseMenu('home'); return false;">Home</a>
+                </div>
+                <div class="header-menu-nav-item" data-page="about">
+                    <a href="#" onclick="showPageAndCloseMenu('about'); return false;">About</a>
+                </div>
+                <div class="header-menu-nav-item" data-page="hr">
+                    <a href="#" onclick="showPageAndCloseMenu('hr'); return false;">H&R</a>
+                </div>
+                <div class="header-menu-nav-item" data-page="media">
+                    <a href="#" onclick="showPageAndCloseMenu('media'); return false;">Media</a>
+                </div>
+                <div class="header-menu-nav-item" data-page="gallery">
+                    <a href="#" onclick="showPageAndCloseMenu('gallery'); return false;">Gallery</a>
+                </div>
+                <div class="header-menu-nav-item" data-page="connect">
+                    <a href="#" onclick="showPageAndCloseMenu('connect'); return false;">Connect</a>
+                </div>
+            </nav>
+        </div>
 
         <!-- Main Content -->
         <main id="page" class="container" role="main">
@@ -791,6 +1061,41 @@
             });
         } else {
             showPage('home');
+        }
+
+        // Mobile menu functions
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const burger = document.querySelector('.header-burger');
+
+            if (mobileMenu.style.display === 'block') {
+                mobileMenu.style.display = 'none';
+                burger.classList.remove('is-active');
+            } else {
+                mobileMenu.style.display = 'block';
+                burger.classList.add('is-active');
+            }
+        }
+
+        function showPageAndCloseMenu(pageName) {
+            // Close the mobile menu
+            const mobileMenu = document.getElementById('mobileMenu');
+            const burger = document.querySelector('.header-burger');
+            mobileMenu.style.display = 'none';
+            burger.classList.remove('is-active');
+
+            // Navigate to the page
+            showPage(pageName);
+
+            // Update mobile menu active states
+            const mobileMenuItems = document.querySelectorAll('.header-menu-nav-item');
+            mobileMenuItems.forEach(item => {
+                if (item.getAttribute('data-page') === pageName) {
+                    item.classList.add('header-nav-item--active');
+                } else {
+                    item.classList.remove('header-nav-item--active');
+                }
+            });
         }
     </script>
 
