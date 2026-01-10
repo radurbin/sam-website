@@ -425,140 +425,151 @@
 
         /* Mobile menu styles */
         .header-burger {
-            display: none;
+            display: block;
             position: relative;
-            width: 28px;
-            height: 20px;
+            width: 30px;
+            height: 24px;
             cursor: pointer;
             z-index: 1001;
             background: none;
             border: none;
             padding: 0;
-            color: inherit;
         }
 
-        .header-burger-inner {
+        .header-burger-inner,
+        .header-burger-inner::before,
+        .header-burger-inner::after {
             position: absolute;
             width: 100%;
             height: 2px;
-            background-color: currentColor;
+            background-color: #000;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .header-burger-inner {
             top: 50%;
             transform: translateY(-50%);
-            transition: background-color 0.3s;
         }
 
         .header-burger-inner::before,
         .header-burger-inner::after {
             content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background-color: currentColor;
-            transition: transform 0.3s;
+            left: 0;
         }
 
         .header-burger-inner::before {
-            top: -8px;
+            top: -9px;
         }
 
         .header-burger-inner::after {
-            top: 8px;
+            top: 9px;
         }
 
+        /* X animation when active */
         .header-burger.is-active .header-burger-inner {
             background-color: transparent;
         }
 
         .header-burger.is-active .header-burger-inner::before {
-            transform: translateY(8px) rotate(45deg);
+            top: 0;
+            transform: rotate(45deg);
+            background-color: #000;
         }
 
         .header-burger.is-active .header-burger-inner::after {
-            transform: translateY(-8px) rotate(-45deg);
+            top: 0;
+            transform: rotate(-45deg);
+            background-color: #000;
         }
 
+        /* Mobile menu overlay with slide-in animation */
         .header-menu-nav-wrapper {
-            display: none;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: white;
+            background-color: #8b9a7d;
             z-index: 1000;
             overflow-y: auto;
-            padding-top: 80px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .header-menu-nav-wrapper.is-open {
-            display: block;
+            transform: translateX(0);
         }
 
         .header-menu-nav-list {
             list-style: none;
             padding: 0;
             margin: 0;
+            text-align: center;
+            width: 100%;
         }
 
         .header-menu-nav-item {
-            border-bottom: 1px solid #e5e5e5;
+            border-bottom: none;
         }
 
         .header-menu-nav-item a {
             display: block;
-            padding: 20px 30px;
+            padding: 25px 30px;
             text-decoration: none;
-            color: #000;
-            font-size: 1.1rem;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 300;
+            transition: opacity 0.2s;
+        }
+
+        .header-menu-nav-item a:hover {
+            opacity: 0.7;
         }
 
         .header-menu-nav-item.header-nav-item--active a {
             opacity: 0.6;
         }
 
+        /* Add social icons to mobile menu */
+        .mobile-menu-social {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .mobile-menu-social a {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-social svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+        }
+
         @media (max-width: 768px) {
-            /* Hide desktop nav */
-            .header-display-desktop .header-nav {
+            /* Hide entire desktop header */
+            .header-display-desktop {
                 display: none !important;
             }
 
-            .header-display-desktop .header-actions {
-                display: none !important;
-            }
-
-            /* Show mobile burger - using multiple selectors for specificity */
-            .header-burger,
-            button.header-burger,
-            .header-title-nav-wrapper .header-burger {
+            /* Show mobile header */
+            .header-display-mobile {
                 display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-
-            /* Adjust header layout for mobile */
-            .header-title-nav-wrapper {
-                width: 100%;
-                display: flex !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-            }
-
-            /* Make sure header title doesn't take full width */
-            .header-title {
-                flex: 0 1 auto !important;
             }
         }
 
-        /* CRITICAL: Override any Squarespace CSS hiding the burger - must be last */
-        @media screen and (max-width: 768px) {
-            .header-display-desktop .header-title-nav-wrapper button.header-burger {
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                position: relative !important;
-                margin-left: auto !important;
-            }
-        }
     </style>
 </head>
 
@@ -599,6 +610,18 @@
                 <div class="header-inner container--fluid header-mobile-layout-logo-left-nav-right header-layout-nav-right">
                     <div class="header-background theme-bg--primary"></div>
 
+                    <!-- Mobile Hamburger (outside header-display-desktop) -->
+                    <div class="header-display-mobile" style="display: none;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 20px;">
+                            <div class="header-title-text">
+                                <a id="site-title-mobile" href="#" onclick="showPage('home'); return false;" style="text-decoration: none; color: inherit; font-weight: normal;">Sam Yousuf</a>
+                            </div>
+                            <button class="header-burger" onclick="toggleMobileMenu()" aria-label="Open Menu">
+                                <div class="header-burger-inner"></div>
+                            </button>
+                        </div>
+                    </div>
+
                     <div class="header-display-desktop" data-content-field="site-title">
                         <div class="header-title-nav-wrapper">
                             <!-- Title -->
@@ -607,11 +630,6 @@
                                     <a id="site-title" href="#" onclick="showPage('home'); return false;" data-animation-role="header-element">Sam Yousuf</a>
                                 </div>
                             </div>
-
-                            <!-- Mobile Hamburger -->
-                            <button class="header-burger" onclick="toggleMobileMenu()" aria-label="Open Menu">
-                                <div class="header-burger-inner"></div>
-                            </button>
 
                             <!-- Nav -->
                             <div class="header-nav">
@@ -682,6 +700,18 @@
                     <a href="#" onclick="showPageAndCloseMenu('connect'); return false;">Connect</a>
                 </div>
             </nav>
+            <div class="mobile-menu-social">
+                <a href="http://instagram.com/samyousuf" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 64 64">
+                        <use xlink:href="#instagram-unauth-icon"></use>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@samyousuf" target="_blank" aria-label="YouTube">
+                    <svg viewBox="0 0 64 64">
+                        <use xlink:href="#youtube-unauth-icon"></use>
+                    </svg>
+                </a>
+            </div>
         </div>
 
         <!-- Main Content -->
@@ -1068,11 +1098,11 @@
             const mobileMenu = document.getElementById('mobileMenu');
             const burger = document.querySelector('.header-burger');
 
-            if (mobileMenu.style.display === 'block') {
-                mobileMenu.style.display = 'none';
+            if (mobileMenu.classList.contains('is-open')) {
+                mobileMenu.classList.remove('is-open');
                 burger.classList.remove('is-active');
             } else {
-                mobileMenu.style.display = 'block';
+                mobileMenu.classList.add('is-open');
                 burger.classList.add('is-active');
             }
         }
@@ -1081,7 +1111,7 @@
             // Close the mobile menu
             const mobileMenu = document.getElementById('mobileMenu');
             const burger = document.querySelector('.header-burger');
-            mobileMenu.style.display = 'none';
+            mobileMenu.classList.remove('is-open');
             burger.classList.remove('is-active');
 
             // Navigate to the page
