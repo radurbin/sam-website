@@ -8,11 +8,108 @@
     <title>Sam Yousuf | Actor</title>
     <link rel="icon" type="image/x-icon" href="https://assets.squarespace.com/universal/default-favicon.ico">
 
-    <!-- Squarespace CSS Files -->
-    <link rel="stylesheet" type="text/css" href="HannahExample/HomePage_files/site.css">
-    <link rel="stylesheet" type="text/css" href="HannahExample/HomePage_files/static.css">
-
     <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* Header styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: white;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header-title-nav-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .header-title a {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .header-nav-list {
+            display: flex;
+            gap: 30px;
+        }
+
+        .header-nav-item a {
+            font-size: 1rem;
+            transition: opacity 0.3s;
+        }
+
+        .header-nav-item a:hover {
+            opacity: 0.6;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-icon {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Main content */
+        main {
+            margin-top: 80px;
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        .content-wrapper {
+            width: 100%;
+        }
+
+        .content {
+            width: 100%;
+        }
+
         /* Page switching styles - using !important to override Squarespace CSS */
         main > .page-section {
             display: none !important;
