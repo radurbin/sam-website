@@ -600,6 +600,86 @@
             .header-display-mobile {
                 display: block !important;
             }
+
+            /* Make hamburger menu smaller */
+            .header-burger {
+                width: 24px;
+                height: 20px;
+            }
+
+            .header-burger-inner::before {
+                top: -7px;
+            }
+
+            .header-burger-inner::after {
+                top: 7px;
+            }
+
+            /* About page - add more space at top */
+            #about-page .page-section {
+                padding-top: 100px !important;
+            }
+
+            /* About page - fix Learn More button width */
+            .about-content {
+                padding: 30px 20px !important;
+            }
+
+            .learn-more-btn {
+                padding: 10px 20px !important;
+                font-size: 0.9rem !important;
+                max-width: fit-content !important;
+            }
+
+            /* H&R page - make buttons narrower and centered */
+            .download-btn {
+                padding: 8px 20px !important;
+                font-size: 0.85rem !important;
+                max-width: fit-content !important;
+                white-space: nowrap !important;
+            }
+
+            .hr-grid {
+                padding: 80px 20px 40px 20px !important;
+            }
+
+            /* Media page - add more space at top */
+            #media-page .page-section {
+                padding-top: 100px !important;
+            }
+
+            /* More Videos button - make narrower */
+            .more-videos-btn {
+                padding: 10px 25px !important;
+                font-size: 0.9rem !important;
+                max-width: fit-content !important;
+            }
+
+            /* Gallery page - add more space at top */
+            #gallery-page .page-section {
+                padding-top: 100px !important;
+            }
+
+            /* Connect page - add more space at top and fix form width */
+            #connect-page .page-section {
+                padding-top: 100px !important;
+            }
+
+            .connect-container {
+                padding: 40px 20px !important;
+            }
+
+            .connect-content {
+                padding: 0 !important;
+            }
+
+            /* Fix form inputs to not exceed background rectangle */
+            .connect-form-area input,
+            .connect-form-area textarea,
+            .connect-form-area select {
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
         }
 
     </style>
@@ -901,7 +981,7 @@
             <!-- GALLERY PAGE -->
             <div id="gallery-page" class="page-section">
                 <article class="sections" data-page-sections="">
-                    <section data-test="page-section" class="page-section" style="padding: 0; padding-top: 120px;">
+                    <section data-test="page-section" class="page-section" style="padding: 0; padding-top: 120px; padding-bottom: 60px;">
                         <div class="content-wrapper">
                             <div class="content">
                                 <div class="gallery-grid">
