@@ -1017,7 +1017,9 @@
                                     <div class="connect-content">
                                         <div class="connect-form-area">
                                             <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: #3d3d3d;">Let's Work Together!</h2>
-                                            <form class="react-form-contents" novalidate="">
+                                            <!-- TODO: Replace YOUR_FORM_ID with your actual Formspree form ID -->
+                                            <!-- Get your form ID at https://formspree.io after signing up -->
+                                            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="react-form-contents">
                                         <div class="field-list" style="color: #3d3d3d;">
                                             <fieldset class="form-item fields name" id="name-field" style="margin-bottom: 20px;">
                                                 <legend>
@@ -1047,7 +1049,7 @@
                                                         <span class="description required">(required)</span>
                                                     </div>
                                                 </label>
-                                                <input aria-required="true" autocomplete="email" id="email-input" placeholder="" type="email" value="" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc;">
+                                                <input aria-required="true" autocomplete="email" id="email-input" name="email" placeholder="" type="email" value="" required style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc;">
                                             </div>
 
                                             <fieldset class="form-item fields phone" id="phone-field" style="margin-bottom: 20px;">
@@ -1057,7 +1059,7 @@
                                                     </div>
                                                 </legend>
                                                 <div class="field">
-                                                    <input inputmode="numeric" id="phone-input" autocomplete="tel-national" type="text" value="" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc;">
+                                                    <input inputmode="numeric" id="phone-input" name="phone" autocomplete="tel-national" type="text" value="" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc;">
                                                 </div>
                                             </fieldset>
 
@@ -1068,7 +1070,7 @@
                                                         <span class="description required">(required)</span>
                                                     </div>
                                                 </label>
-                                                <textarea id="message-input" placeholder="" style="width: 100%; padding: 10px; margin-top: 5px; min-height: 150px; border: 1px solid #ccc;"></textarea>
+                                                <textarea id="message-input" name="message" placeholder="" required style="width: 100%; padding: 10px; margin-top: 5px; min-height: 150px; border: 1px solid #ccc;"></textarea>
                                             </div>
                                         </div>
 
