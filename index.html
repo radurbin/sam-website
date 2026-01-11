@@ -39,7 +39,7 @@
         /* Gallery grid styles - masonry layout with no gaps */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 0;
             width: 100%;
         }
@@ -49,19 +49,16 @@
             height: 100%;
             object-fit: cover;
             display: block;
-        }
-
-        /* Varied row layouts */
-        .gallery-grid img:nth-child(6),
-        .gallery-grid img:nth-child(7),
-        .gallery-grid img:nth-child(8),
-        .gallery-grid img:nth-child(9) {
-            grid-column: span 1.25;
+            min-height: 250px;
         }
 
         @media (max-width: 768px) {
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid img {
+                min-height: 150px;
             }
         }
 
@@ -111,7 +108,7 @@
         }
 
         .more-videos-btn {
-            display: block;
+            display: inline-block;
             margin: 40px auto;
             padding: 15px 40px;
             background-color: white;
@@ -120,6 +117,7 @@
             font-size: 1.1rem;
             cursor: pointer;
             text-align: center;
+            text-decoration: none;
         }
 
         @media (max-width: 768px) {
@@ -591,6 +589,9 @@
             <symbol id="youtube-unauth-mask" viewBox="0 0 64 64">
                 <path d="M0,0v64h64V0H0z M47,32.7c0,2.3-0.3,4.7-0.3,4.7s-0.3,2.1-1.2,3c-1.1,1.2-2.4,1.2-3,1.3C38.3,42.1,32,42.1,32,42.1s-7.8-0.1-10.2-0.3c-0.7-0.1-2.2-0.1-3.3-1.3c-0.9-0.9-1.2-3-1.2-3S17,35.1,17,32.7v-2.1c0-2.3,0.3-4.7,0.3-4.7s0.3-2.1,1.2-3c1.1-1.2,2.4-1.2,3-1.3c4.2-0.3,10.5-0.3,10.5-0.3h0c0,0,6.3,0,10.5,0.3c0.6,0.1,1.9,0.1,3,1.3c0.9,0.9,1.2,3,1.2,3s0.3,2.3,0.3,4.7V32.7z M28.9,35.9l8.1-4.2l-8.1-4.2L28.9,35.9z"/>
             </symbol>
+            <symbol id="tiktok-icon" viewBox="0 0 64 64">
+                <path d="M41.9,18.4c-2.5-1.7-4.1-4.6-4.1-7.8V9h-6.5v28.9c0,3.3-2.7,6-6,6s-6-2.7-6-6s2.7-6,6-6c0.6,0,1.2,0.1,1.8,0.3V25.7c-0.6-0.1-1.2-0.1-1.8-0.1c-6.8,0-12.3,5.5-12.3,12.3S18.5,50.2,25.3,50.2s12.3-5.5,12.3-12.3V23.3c2.7,1.9,6,3,9.5,3v-6.5C45.1,19.8,43.3,19.4,41.9,18.4z"/>
+            </symbol>
         </svg>
 
         <!-- Header -->
@@ -661,9 +662,14 @@
                         <!-- Social Icons (Desktop) -->
                         <div class="header-actions header-actions--right">
                             <div class="header-actions-action header-actions-action--social">
-                                <a class="icon icon--fill header-icon header-icon-border-shape-circle header-icon-border-style-outline" style="box-shadow: 0px 0px 0px 1px inset" href="http://instagram.com/samyousuf" target="_blank" aria-label="Instagram">
+                                <a class="icon icon--fill header-icon header-icon-border-shape-circle header-icon-border-style-outline" style="box-shadow: 0px 0px 0px 1px inset" href="https://www.instagram.com/samyousuf_/" target="_blank" aria-label="Instagram">
                                     <svg viewBox="23 23 64 64">
                                         <use xlink:href="#instagram-unauth-icon" width="110" height="110"></use>
+                                    </svg>
+                                </a>
+                                <a class="icon icon--fill header-icon header-icon-border-shape-circle header-icon-border-style-outline" style="box-shadow: 0px 0px 0px 1px inset" href="https://www.tiktok.com/@samyousuf_" target="_blank" aria-label="TikTok">
+                                    <svg viewBox="23 23 64 64">
+                                        <use xlink:href="#tiktok-icon" width="110" height="110"></use>
                                     </svg>
                                 </a>
                                 <a class="icon icon--fill header-icon header-icon-border-shape-circle header-icon-border-style-outline" style="box-shadow: 0px 0px 0px 1px inset" href="https://www.youtube.com/@samyousuf" target="_blank" aria-label="YouTube">
@@ -701,9 +707,14 @@
                 </div>
             </nav>
             <div class="mobile-menu-social">
-                <a href="http://instagram.com/samyousuf" target="_blank" aria-label="Instagram">
+                <a href="https://www.instagram.com/samyousuf_/" target="_blank" aria-label="Instagram">
                     <svg viewBox="0 0 64 64">
                         <use xlink:href="#instagram-unauth-icon"></use>
+                    </svg>
+                </a>
+                <a href="https://www.tiktok.com/@samyousuf_" target="_blank" aria-label="TikTok">
+                    <svg viewBox="0 0 64 64">
+                        <use xlink:href="#tiktok-icon"></use>
                     </svg>
                 </a>
                 <a href="https://www.youtube.com/@samyousuf" target="_blank" aria-label="YouTube">
@@ -777,10 +788,8 @@
                                         <a href="#" download class="download-btn">Download Headshot 1</a>
                                     </div>
                                     <div class="headshot-item">
-                                        <div style="background-color: #d9d4c8; aspect-ratio: 8.5/11; margin-bottom: 20px;">
-                                            <div class="image-placeholder">Resume</div>
-                                        </div>
-                                        <a href="#" download class="download-btn">Download Resume</a>
+                                        <img src="SAM YOUSUF - Resume.jpg" alt="Sam Yousuf Resume" style="margin-bottom: 20px;">
+                                        <a href="SAM YOUSUF - Resume.pdf" download class="download-btn">Download Resume</a>
                                     </div>
                                     <div class="headshot-item single">
                                         <div style="background-color: #9aa88c; aspect-ratio: 3/4; margin-bottom: 20px;">
@@ -798,70 +807,56 @@
             <!-- MEDIA PAGE -->
             <div id="media-page" class="page-section">
                 <article class="sections" data-page-sections="">
-                    <section data-test="page-section" class="page-section" style="padding: 60px 40px;">
+                    <section data-test="page-section" class="page-section" style="padding: 120px 40px 60px 40px;">
                         <div class="content-wrapper">
                             <div class="content" style="max-width: 1200px; margin: 0 auto;">
 
-                                <!-- Row 1: Video + Review -->
+                                <!-- Row 1: Review Only -->
                                 <div class="media-row">
-                                    <div class="video-wrapper" style="background-color: #4a5240;">
-                                        <div class="image-placeholder">Video Placeholder</div>
+                                    <div class="review-text">
+                                        <p>"Sam Yousuf as Seaweed J. Stubbs electrifies every scene he enters. With vocals that slide like butter and moves that defy gravity, he captures the heart of the show's message with both cool confidence and grounded vulnerability."</p>
+                                        <p style="margin-top: 10px;">- <em>Warwick Beacon - TBTS Hairspray</em></p>
                                     </div>
                                     <div class="review-text">
-                                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Exceptional performance that captivated the entire audience."</p>
-                                        <p style="margin-top: 10px;">- <em>Review Publication</em></p>
-                                        <a href="#" class="download-btn" style="display: inline-block; margin-top: 20px;">Click to Watch Now</a>
+                                        <p>"Also triple-threat terrific…Sam Yousuf as Penny's love interest Seaweed, and the featured player in the high-energy, dance break-driven 'Run and Tell That.'"</p>
+                                        <p style="margin-top: 10px;">- <em>The Boston Globe - TBTS Hairspray</em></p>
                                     </div>
                                 </div>
 
-                                <!-- Row 2: Review + Video -->
+                                <!-- Row 2: Video + Review -->
                                 <div class="media-row">
-                                    <div class="review-text">
-                                        <p>"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A truly moving and powerful performance."</p>
-                                        <p style="margin-top: 10px;">- <em>Theatre Review</em></p>
+                                    <div class="video-wrapper">
+                                        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/lzmoUqCDDEY?rel=0" title="Sam Yousuf Performance" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                     </div>
-                                    <div class="video-wrapper" style="background-color: #4a5240;">
-                                        <div class="image-placeholder">Video Placeholder</div>
+                                    <div class="review-text">
+                                        <p>"The most impressive moment of the show comes, though, from Sam Yousuf, playing the comfort counselor Mitch Mahoney. His stratospheric vocals have to be heard to be believed, and come in handy several times, including the aforementioned 'I Love You Song.'"</p>
+                                        <p style="margin-top: 10px;">- <em>League of Cincinnati Theatres</em></p>
                                     </div>
                                 </div>
 
-                                <!-- Row 3: Video + Review -->
+                                <!-- Row 3: Review + Video -->
                                 <div class="media-row">
-                                    <div class="video-wrapper" style="background-color: #4a5240;">
-                                        <div class="image-placeholder">Video Placeholder</div>
-                                    </div>
                                     <div class="review-text">
-                                        <p>"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Outstanding comedic timing and vocal performance throughout."</p>
-                                        <p style="margin-top: 10px;">- <em>Performance Review</em></p>
-                                        <a href="#" class="download-btn" style="display: inline-block; margin-top: 20px;">Click to Watch Now</a>
+                                        <p>"Sam Yousuf brought a quiet intensity and vulnerability to Claude, perfectly capturing a young man torn between loyalty and duty."</p>
+                                        <p style="margin-top: 10px;">- <em>League of Cincinnati Theatres</em></p>
+                                    </div>
+                                    <div class="video-wrapper">
+                                        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/JzS_ZxqTAL8?rel=0" title="Sam Yousuf Performance" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                     </div>
                                 </div>
 
-                                <!-- Row 4: Review + Video -->
+                                <!-- Row 4: Review -->
                                 <div class="media-row">
-                                    <div class="review-text">
-                                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. An unforgettable theatrical moment.</p>
-                                    </div>
-                                    <div class="video-wrapper" style="background-color: #4a5240;">
-                                        <div class="image-placeholder">Video Placeholder</div>
-                                    </div>
-                                </div>
-
-                                <!-- Row of 3 videos without text -->
-                                <div class="media-three-videos" style="margin-top: 80px;">
-                                    <div class="video-wrapper" style="background-color: #4a5240;">
-                                        <div class="image-placeholder">Video Placeholder</div>
-                                    </div>
-                                    <div class="video-wrapper" style="background-color: #4a5240;">
-                                        <div class="image-placeholder">Video Placeholder</div>
-                                    </div>
-                                    <div class="video-wrapper" style="background-color: #4a5240;">
-                                        <div class="image-placeholder">Video Placeholder</div>
+                                    <div class="review-text" style="grid-column: 1 / -1; text-align: center;">
+                                        <p>"As Grover, Sam Yousuf supplies praiseworthy comic relief and shows off great stage presence."</p>
+                                        <p style="margin-top: 10px;">- <em>Talkin Broadway Cincinnati</em></p>
                                     </div>
                                 </div>
 
                                 <!-- More Videos Button -->
-                                <button class="more-videos-btn">More Videos</button>
+                                <div style="text-align: center;">
+                                    <a href="https://www.youtube.com/@samyousuf" target="_blank" class="more-videos-btn">More Videos</a>
+                                </div>
 
                             </div>
                         </div>
@@ -872,40 +867,25 @@
             <!-- GALLERY PAGE -->
             <div id="gallery-page" class="page-section">
                 <article class="sections" data-page-sections="">
-                    <section data-test="page-section" class="page-section" style="padding: 0; padding-top: 80px;">
+                    <section data-test="page-section" class="page-section" style="padding: 0; padding-top: 120px;">
                         <div class="content-wrapper">
                             <div class="content">
                                 <div class="gallery-grid">
-                                    <div style="background-color: #8b9575; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #a8b092; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #7a8568; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #9aa687; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #6f7d5e; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #b5c09d; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #8a9679; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #a0ab8e; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #7d8b6c; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #9ba88a; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #737f64; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #a8b597; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #869272; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #96a285; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #7b8869; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #a3af93; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #889477; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #929e82; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #778366; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #a5b190; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #8a967a; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #94a07e; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #79856b; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #a1ad8d; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #8c9875; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #969f88; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #7c8a70; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #a7b394; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #8e9a7c; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
-                                    <div style="background-color: #98a486; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;"></div>
+                                    <img src="Seaweed in Hairspray (1).jpg" alt="Sam Yousuf as Seaweed in Hairspray">
+                                    <img src="Seaweed in Hairspray (2).jpg" alt="Sam Yousuf as Seaweed in Hairspray">
+                                    <img src="Seaweed in Hairspray (3).jpg" alt="Sam Yousuf as Seaweed in Hairspray">
+                                    <img src="Hair Claude solo.jpg" alt="Sam Yousuf as Claude in Hair">
+                                    <img src="Claude (Hair) 2.JPG" alt="Sam Yousuf as Claude in Hair">
+                                    <img src="Claude (Hair) 3.JPG" alt="Sam Yousuf as Claude in Hair">
+                                    <img src="Hair. Finale GROUP NUMBER FLESH FAILURES.jpg" alt="Hair Finale - Flesh Failures">
+                                    <img src="Grover (TLT).jpg" alt="Sam Yousuf as Grover">
+                                    <img src="Grover (TLT) 2.jpg" alt="Sam Yousuf as Grover">
+                                    <img src="Grover TLT 3.jpg" alt="Sam Yousuf as Grover">
+                                    <img src="Spelling Bee PIC.JPG" alt="Sam Yousuf in Spelling Bee">
+                                    <img src="Wonderful Town.jpg" alt="Sam Yousuf in Wonderful Town">
+                                    <img src="Kaleidescope.JPEG" alt="Sam Yousuf Performance">
+                                    <img src="Carnegie Hall.jpg" alt="Sam Yousuf at Carnegie Hall">
+                                    <img src="Class Pic.jpg" alt="Sam Yousuf Class Photo">
                                 </div>
                             </div>
                         </div>
@@ -1014,10 +994,17 @@
                             <!-- Center: Social Icons -->
                             <div class="footer-center">
                                 <nav class="sqs-svg-icon--list" style="display: inline-flex; gap: 15px;">
-                                    <a href="http://instagram.com/samyousuf" target="_blank" class="sqs-svg-icon--wrapper instagram-unauth" aria-label="Instagram">
+                                    <a href="https://www.instagram.com/samyousuf_/" target="_blank" class="sqs-svg-icon--wrapper instagram-unauth" aria-label="Instagram">
                                         <div>
                                             <svg class="sqs-svg-icon--social" viewBox="0 0 64 64" style="width: 24px; height: 24px; fill: white;">
                                                 <use class="sqs-use--icon" xlink:href="#instagram-unauth-icon"></use>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.tiktok.com/@samyousuf_" target="_blank" class="sqs-svg-icon--wrapper tiktok" aria-label="TikTok">
+                                        <div>
+                                            <svg class="sqs-svg-icon--social" viewBox="0 0 64 64" style="width: 24px; height: 24px; fill: white;">
+                                                <use class="sqs-use--icon" xlink:href="#tiktok-icon"></use>
                                             </svg>
                                         </div>
                                     </a>
@@ -1046,11 +1033,9 @@
     <!-- Page Navigation Script -->
     <script>
         function showPage(pageName) {
-            console.log('showPage called with:', pageName);
 
             // Hide all pages - use more specific selector
             const pages = document.querySelectorAll('main > .page-section');
-            console.log('Found pages:', pages.length);
             pages.forEach(page => {
                 page.classList.remove('active');
                 page.style.display = 'none';
@@ -1058,7 +1043,6 @@
 
             // Show selected page
             const selectedPage = document.getElementById(pageName + '-page');
-            console.log('Selected page:', selectedPage);
             if (selectedPage) {
                 selectedPage.classList.add('active');
                 selectedPage.style.display = 'block';
@@ -1080,7 +1064,6 @@
 
         // Initialize - show home page on load
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Page loaded');
             showPage('home');
         });
 
