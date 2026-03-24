@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Sam Yousuf | Actor</title>
-    <link rel="icon" type="image/x-icon" href="https://assets.squarespace.com/universal/default-favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
 
     <!-- Squarespace CSS Files -->
     <link rel="stylesheet" type="text/css" href="site.css">
@@ -23,6 +23,14 @@
             display: none !important;
         }
         main > .page-section.active {
+            display: block !important;
+        }
+
+        /* Extra specificity safety net using IDs */
+        #home-page, #about-page, #hr-page, #media-page, #gallery-page, #contact-page {
+            display: none !important;
+        }
+        #home-page.active, #about-page.active, #hr-page.active, #media-page.active, #gallery-page.active, #contact-page.active {
             display: block !important;
         }
 
@@ -51,64 +59,147 @@
             opacity: 0.6;
         }
 
-        /* Gallery grid styles - masonry layout with no gaps */
+        /* Gallery section backgrounds */
+        .gallery-section {
+            padding: 20px 0 50px;
+            width: 100%;
+            display: block;
+        }
+
+        .gallery-section--commercial {
+            background-color: #b0bcab;
+        }
+
+        .gallery-section--production {
+            background-color: #6b7a60;
+        }
+
+        .gallery-section--commercial .gallery-section-title {
+            color: #4a5e3c;
+        }
+
+        .gallery-section--commercial .gallery-section-empty {
+            color: #4a5e3c;
+        }
+
+        /* Gallery section title */
+        .gallery-section-title {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin: 50px auto 18px;
+            padding: 0 20px;
+            max-width: 1100px;
+            display: block;
+        }
+
+        .gallery-section-empty {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.95rem;
+            font-style: italic;
+            padding: 0 20px;
+            max-width: 1100px;
+            margin: 0 auto 40px;
+            display: block;
+        }
+
+        /* Gallery grid styles */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 180px;
+            gap: 8px;
             width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
+            max-width: 1100px;
+            margin: 0 auto 50px;
             padding: 0 20px;
         }
 
-        .gallery-grid img {
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: filter 0.3s ease;
         }
 
-        /* Varied layout - some images span multiple columns/rows */
-        .gallery-grid img:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-        .gallery-grid img:nth-child(2) { grid-column: span 2; grid-row: span 1; }
-        .gallery-grid img:nth-child(3) { grid-column: span 2; grid-row: span 2; }
-        .gallery-grid img:nth-child(4) { grid-column: span 3; grid-row: span 2; }
-        .gallery-grid img:nth-child(5) { grid-column: span 3; grid-row: span 2; }
-        .gallery-grid img:nth-child(6) { grid-column: span 2; grid-row: span 1; }
-        .gallery-grid img:nth-child(7) { grid-column: span 2; grid-row: span 2; }
-        .gallery-grid img:nth-child(8) { grid-column: span 2; grid-row: span 1; }
-        .gallery-grid img:nth-child(9) { grid-column: span 3; grid-row: span 2; }
-        .gallery-grid img:nth-child(10) { grid-column: span 3; grid-row: span 2; }
-        .gallery-grid img:nth-child(11) { grid-column: span 2; grid-row: span 2; }
-        .gallery-grid img:nth-child(12) { grid-column: span 2; grid-row: span 1; }
-        .gallery-grid img:nth-child(13) { grid-column: span 2; grid-row: span 1; }
-        .gallery-grid img:nth-child(14) { grid-column: span 3; grid-row: span 2; }
-        .gallery-grid img:nth-child(15) { grid-column: span 3; grid-row: span 2; }
+        /* Custom vertical crop position — desktop */
+        img.img-pos-top {
+            object-position: center 30%;
+        }
+
+        @media (max-width: 768px) {
+            img.img-pos-top {
+                object-position: center 30%;
+            }
+            img.img-pos-mobile-25 {
+                object-position: center 25%;
+            }
+        }
+
+        .gallery-item:hover img {
+            filter: blur(4px) brightness(0.6);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay p {
+            color: white;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Varied layout */
+        .gallery-grid .gallery-item:nth-child(1)  { grid-column: span 2; grid-row: span 2; }
+        .gallery-grid .gallery-item:nth-child(2)  { grid-column: span 1; grid-row: span 1; }
+        .gallery-grid .gallery-item:nth-child(3)  { grid-column: span 1; grid-row: span 2; }
+        .gallery-grid .gallery-item:nth-child(4)  { grid-column: span 1; grid-row: span 1; }
+        .gallery-grid .gallery-item:nth-child(5)  { grid-column: span 2; grid-row: span 1; }
+        .gallery-grid .gallery-item:nth-child(6)  { grid-column: span 2; grid-row: span 2; }
+        .gallery-grid .gallery-item:nth-child(7)  { grid-column: span 1; grid-row: span 1; }
+        .gallery-grid .gallery-item:nth-child(8)  { grid-column: span 1; grid-row: span 1; }
+        .gallery-grid .gallery-item:nth-child(9)  { grid-column: span 2; grid-row: span 1; }
+        .gallery-grid .gallery-item:nth-child(10) { grid-column: span 2; grid-row: span 2; }
+        .gallery-grid .gallery-item:nth-child(11) { grid-column: span 2; grid-row: span 2; }
+        .gallery-grid .gallery-item:nth-child(12) { grid-column: span 1; grid-row: span 1; }
+        .gallery-grid .gallery-item:nth-child(13) { grid-column: span 1; grid-row: span 1; }
+        .gallery-grid .gallery-item:nth-child(14) { grid-column: span 2; grid-row: span 1; }
+        .gallery-grid .gallery-item:nth-child(15) { grid-column: span 2; grid-row: span 1; }
 
         @media (max-width: 768px) {
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 140px;
                 gap: 5px;
                 padding: 0 10px;
             }
 
-            /* Simplified layout for mobile */
-            .gallery-grid img:nth-child(1) { grid-column: span 2; grid-row: span 1; }
-            .gallery-grid img:nth-child(2) { grid-column: span 1; grid-row: span 1; }
-            .gallery-grid img:nth-child(3) { grid-column: span 1; grid-row: span 1; }
-            .gallery-grid img:nth-child(4) { grid-column: span 2; grid-row: span 1; }
-            .gallery-grid img:nth-child(5) { grid-column: span 1; grid-row: span 1; }
-            .gallery-grid img:nth-child(6) { grid-column: span 1; grid-row: span 1; }
-            .gallery-grid img:nth-child(7) { grid-column: span 2; grid-row: span 1; }
-            .gallery-grid img:nth-child(8) { grid-column: span 1; grid-row: span 1; }
-            .gallery-grid img:nth-child(9) { grid-column: span 1; grid-row: span 1; }
-            .gallery-grid img:nth-child(10) { grid-column: span 2; grid-row: span 1; }
-            .gallery-grid img:nth-child(11) { grid-column: span 1; grid-row: span 1; }
-            .gallery-grid img:nth-child(12) { grid-column: span 1; grid-row: span 1; }
-            .gallery-grid img:nth-child(13) { grid-column: span 2; grid-row: span 1; }
-            .gallery-grid img:nth-child(14) { grid-column: span 1; grid-row: span 1; }
-            .gallery-grid img:nth-child(15) { grid-column: span 1; grid-row: span 1; }
+            .gallery-grid .gallery-item:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+            .gallery-grid .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+            .gallery-grid .gallery-item:nth-child(4) { grid-column: span 2; grid-row: span 1; }
+            .gallery-grid .gallery-item:nth-child(9) { grid-column: span 2; grid-row: span 1; }
         }
 
         /* Media page layout - video + review rows */
@@ -274,7 +365,13 @@
             }
         }
 
-        /* Connect page layout */
+        /* Contact page layout */
+        #contact-page .page-section {
+            padding-top: 120px !important;
+            display: block !important;
+            align-items: initial !important;
+        }
+
         .connect-container {
             background-color: #f5f0e8;
             padding: 60px 20px;
@@ -349,6 +446,58 @@
         /* Ensure footer is always visible */
         footer {
             display: block !important;
+        }
+
+        /* Contact page info area */
+        .contact-info-area {
+            padding: 10px 0;
+        }
+
+        .contact-social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border: 2px solid #6b7456;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .contact-social-btn:hover {
+            background-color: #6b7456;
+        }
+
+        .contact-social-btn svg {
+            width: 40px;
+            height: 40px;
+            fill: #6b7456;
+            transition: fill 0.2s;
+        }
+
+        .contact-social-btn:hover svg {
+            fill: white;
+        }
+
+        /* Email icon in navbar — slightly smaller than social icons */
+        .header-icon.email-nav-icon svg {
+            width: 20px !important;
+            height: 20px !important;
+        }
+
+        .contact-email-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #6b7456;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: opacity 0.2s;
+        }
+
+        .contact-email-btn:hover {
+            opacity: 0.85;
         }
 
         /* Fix fieldset borders on connect form */
@@ -604,8 +753,8 @@
         }
 
         .mobile-menu-social svg {
-            width: 20px;
-            height: 20px;
+            width: 36px;
+            height: 36px;
             fill: #fff;
         }
 
@@ -694,8 +843,8 @@
                 padding-top: 100px !important;
             }
 
-            /* Connect page - add more space at top and fix form width */
-            #connect-page .page-section {
+            /* Contact page - add more space at top */
+            #contact-page .page-section {
                 padding-top: 100px !important;
             }
 
@@ -803,6 +952,9 @@
             <symbol id="tiktok-icon" viewBox="0 0 64 64">
                 <path d="M41.9,18.4c-2.5-1.7-4.1-4.6-4.1-7.8V9h-6.5v28.9c0,3.3-2.7,6-6,6s-6-2.7-6-6s2.7-6,6-6c0.6,0,1.2,0.1,1.8,0.3V25.7c-0.6-0.1-1.2-0.1-1.8-0.1c-6.8,0-12.3,5.5-12.3,12.3S18.5,50.2,25.3,50.2s12.3-5.5,12.3-12.3V23.3c2.7,1.9,6,3,9.5,3v-6.5C45.1,19.8,43.3,19.4,41.9,18.4z"/>
             </symbol>
+            <symbol id="email-icon" viewBox="0 0 64 64">
+                <path d="M56,16H8c-2.2,0-4,1.8-4,4v24c0,2.2,1.8,4,4,4h48c2.2,0,4-1.8,4-4V20C60,17.8,58.2,16,56,16z M56,20L32,36L8,20H56z M8,44V24.8l23.1,13.9c0.3,0.2,0.6,0.2,0.9,0.2s0.6-0.1,0.9-0.2L56,24.8V44H8z"/>
+            </symbol>
         </svg>
 
         <!-- Header -->
@@ -814,8 +966,6 @@
             --gradientHeaderNavigationColor: hsla(var(--black-hsl), 1);
         ">
             <div class="header-announcement-bar-wrapper">
-                <a href="#page" class="header-skip-link sqs-button-element--primary">Skip to Content</a>
-
                 <div class="header-border" data-header-style="dynamic" data-header-border="false"></div>
                 <div class="header-dropshadow" data-header-style="dynamic" data-header-dropshadow="false"></div>
 
@@ -862,8 +1012,8 @@
                                         <div class="header-nav-item header-nav-item--collection" data-page="gallery">
                                             <a href="#" onclick="showPage('gallery'); return false;" data-animation-role="header-element">Gallery</a>
                                         </div>
-                                        <div class="header-nav-item header-nav-item--collection" data-page="connect">
-                                            <a href="#" onclick="showPage('connect'); return false;" data-animation-role="header-element">Connect</a>
+                                        <div class="header-nav-item header-nav-item--collection" data-page="contact">
+                                            <a href="#" onclick="showPage('contact'); return false;" data-animation-role="header-element">Contact</a>
                                         </div>
                                     </nav>
                                 </div>
@@ -873,6 +1023,9 @@
                         <!-- Social Icons (Desktop) -->
                         <div class="header-actions header-actions--right">
                             <div class="header-actions-action header-actions-action--social">
+                                <a class="icon icon--fill header-icon email-nav-icon header-icon-border-shape-circle header-icon-border-style-outline" style="box-shadow: 0px 0px 0px 1px inset" href="mailto:samyousuf01@gmail.com" aria-label="Email">
+                                    <svg viewBox="0 0 64 64" style="height:28px; width:28px;"><use xlink:href="#email-icon"></use></svg>
+                                </a>
                                 <a class="icon icon--fill header-icon header-icon-border-shape-circle header-icon-border-style-outline" style="box-shadow: 0px 0px 0px 1px inset" href="https://www.instagram.com/samyousuf_/" target="_blank" aria-label="Instagram">
                                     <svg viewBox="23 23 64 64">
                                         <use xlink:href="#instagram-unauth-icon" width="110" height="110"></use>
@@ -883,7 +1036,7 @@
                                         <use xlink:href="#tiktok-icon" width="110" height="110"></use>
                                     </svg>
                                 </a>
-                                <a class="icon icon--fill header-icon header-icon-border-shape-circle header-icon-border-style-outline" style="box-shadow: 0px 0px 0px 1px inset" href="https://www.youtube.com/@samyousuf" target="_blank" aria-label="YouTube">
+                                <a class="icon icon--fill header-icon header-icon-border-shape-circle header-icon-border-style-outline" style="box-shadow: 0px 0px 0px 1px inset" href="https://www.youtube.com/@samyousuf_" target="_blank" aria-label="YouTube">
                                     <svg viewBox="23 23 64 64">
                                         <use xlink:href="#youtube-unauth-icon" width="110" height="110"></use>
                                     </svg>
@@ -913,11 +1066,16 @@
                 <div class="header-menu-nav-item" data-page="gallery">
                     <a href="#" onclick="showPageAndCloseMenu('gallery'); return false;">Gallery</a>
                 </div>
-                <div class="header-menu-nav-item" data-page="connect">
-                    <a href="#" onclick="showPageAndCloseMenu('connect'); return false;">Connect</a>
+                <div class="header-menu-nav-item" data-page="contact">
+                    <a href="#" onclick="showPageAndCloseMenu('contact'); return false;">Contact</a>
                 </div>
             </nav>
             <div class="mobile-menu-social">
+                <a href="mailto:samyousuf01@gmail.com" aria-label="Email">
+                    <svg viewBox="0 0 64 64" style="height: 22px; width: 22px;">
+                        <use xlink:href="#email-icon"></use>
+                    </svg>
+                </a>
                 <a href="https://www.instagram.com/samyousuf_/" target="_blank" aria-label="Instagram">
                     <svg viewBox="0 0 64 64">
                         <use xlink:href="#instagram-unauth-icon"></use>
@@ -928,7 +1086,7 @@
                         <use xlink:href="#tiktok-icon"></use>
                     </svg>
                 </a>
-                <a href="https://www.youtube.com/@samyousuf" target="_blank" aria-label="YouTube">
+                <a href="https://www.youtube.com/@samyousuf_" target="_blank" aria-label="YouTube">
                     <svg viewBox="0 0 64 64">
                         <use xlink:href="#youtube-unauth-icon"></use>
                     </svg>
@@ -975,7 +1133,7 @@
                                         <p class="" style="white-space:pre-wrap;">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
                                         <p class="" style="white-space:pre-wrap;">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
                                         <p class="" style="white-space:pre-wrap;">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
-                                        <a href="#" class="learn-more-btn">Learn More</a>
+                                        <a href="#" onclick="showPage('hr'); return false;" class="learn-more-btn">Learn More</a>
                                     </div>
                                 </div>
                                 </div>
@@ -1066,7 +1224,7 @@
 
                                 <!-- More Videos Button -->
                                 <div style="text-align: center;">
-                                    <a href="https://www.youtube.com/@samyousuf" target="_blank" class="more-videos-btn">More Videos</a>
+                                    <a href="https://www.youtube.com/@samyousuf_" target="_blank" class="more-videos-btn">More Videos</a>
                                 </div>
 
                             </div>
@@ -1078,105 +1236,95 @@
             <!-- GALLERY PAGE -->
             <div id="gallery-page" class="page-section">
                 <article class="sections" data-page-sections="">
-                    <section data-test="page-section" class="page-section" style="padding: 0; padding-top: 120px; padding-bottom: 60px;">
-                        <div class="content-wrapper">
-                            <div class="content">
-                                <div class="gallery-grid">
-                                    <img src="Seaweed in Hairspray (1).jpg" alt="Sam Yousuf as Seaweed in Hairspray">
-                                    <img src="Seaweed in Hairspray (2).jpg" alt="Sam Yousuf as Seaweed in Hairspray">
-                                    <img src="Seaweed in Hairspray (3).jpg" alt="Sam Yousuf as Seaweed in Hairspray">
-                                    <img src="Hair Claude solo.jpg" alt="Sam Yousuf as Claude in Hair">
-                                    <img src="Claude (Hair) 2.JPG" alt="Sam Yousuf as Claude in Hair">
-                                    <img src="Claude (Hair) 3.JPG" alt="Sam Yousuf as Claude in Hair">
-                                    <img src="Hair. Finale GROUP NUMBER FLESH FAILURES.jpg" alt="Hair Finale - Flesh Failures">
-                                    <img src="Grover (TLT).jpg" alt="Sam Yousuf as Grover">
-                                    <img src="Grover (TLT) 2.jpg" alt="Sam Yousuf as Grover">
-                                    <img src="Grover TLT 3.jpg" alt="Sam Yousuf as Grover">
-                                    <img src="Spelling Bee PIC.JPG" alt="Sam Yousuf in Spelling Bee">
-                                    <img src="Wonderful Town.jpg" alt="Sam Yousuf in Wonderful Town">
-                                    <img src="Kaleidescope.JPEG" alt="Sam Yousuf Performance">
-                                    <img src="Carnegie Hall.jpg" alt="Sam Yousuf at Carnegie Hall">
-                                    <img src="Class Pic.jpg" alt="Sam Yousuf Class Photo">
+                    <section data-test="page-section" class="page-section" style="padding: 0; padding-top: 120px; display: flex; flex-direction: column;">
+
+                                <!-- Commercial Section -->
+                                <div class="gallery-section gallery-section--commercial">
+                                    <span class="gallery-section-title">Commercial</span>
+                                    <span class="gallery-section-empty">Coming soon...</span>
                                 </div>
-                            </div>
-                        </div>
+
+                                <!-- Production Section -->
+                                <div class="gallery-section gallery-section--production">
+                                <span class="gallery-section-title">Production</span>
+                                <div class="gallery-grid">
+                                    <div class="gallery-item">
+                                        <img src="Seaweed in Hairspray (1).jpg" alt="Sam Yousuf as Seaweed in Hairspray">
+                                        <div class="gallery-overlay"><p>Sam Yousuf as Seaweed in Hairspray</p></div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="Seaweed in Hairspray (2).jpg" alt="Sam Yousuf as Seaweed in Hairspray">
+                                        <div class="gallery-overlay"><p>Sam Yousuf as Seaweed in Hairspray</p></div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="Seaweed in Hairspray (3).jpg" alt="Sam Yousuf as Seaweed in Hairspray">
+                                        <div class="gallery-overlay"><p>Sam Yousuf as Seaweed in Hairspray</p></div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="Hair Claude solo.jpg" alt="Sam Yousuf as Claude in Hair" class="img-pos-top img-pos-mobile-25">
+                                        <div class="gallery-overlay"><p>Sam Yousuf as Claude in Hair</p></div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="Claude (Hair) 2.JPG" alt="Sam Yousuf as Claude in Hair">
+                                        <div class="gallery-overlay"><p>Sam Yousuf as Claude in Hair</p></div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="Claude (Hair) 3.JPG" alt="Sam Yousuf as Claude in Hair">
+                                        <div class="gallery-overlay"><p>Sam Yousuf as Claude in Hair</p></div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="Hair. Finale GROUP NUMBER FLESH FAILURES.jpg" alt="Hair Finale - Flesh Failures">
+                                        <div class="gallery-overlay"><p>Hair &mdash; Finale: Flesh Failures</p></div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="Grover (TLT).jpg" alt="Sam Yousuf as Grover" class="img-pos-top">
+                                        <div class="gallery-overlay"><p>Sam Yousuf as Grover in The Lightning Thief</p></div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="Grover TLT 3.jpg" alt="Sam Yousuf as Grover" class="img-pos-top">
+                                        <div class="gallery-overlay"><p>Sam Yousuf as Grover in The Lightning Thief</p></div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="Spelling Bee PIC.JPG" alt="Sam Yousuf in Spelling Bee">
+                                        <div class="gallery-overlay"><p>Sam Yousuf in The 25th Annual Putnam County Spelling Bee</p></div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="Wonderful Town.jpg" alt="Sam Yousuf in Wonderful Town">
+                                        <div class="gallery-overlay"><p>Sam Yousuf in Wonderful Town</p></div>
+                                    </div>
+                                </div>
+                                </div><!-- end production section -->
                     </section>
                 </article>
             </div>
 
-            <!-- CONNECT PAGE -->
-            <div id="connect-page" class="page-section">
+            <!-- CONTACT PAGE -->
+            <div id="contact-page" class="page-section">
                 <article class="sections" data-page-sections="">
                     <section data-test="page-section" class="page-section" style="padding-bottom: 60px;">
                         <div class="content-wrapper">
                             <div class="content">
                                 <div class="connect-container">
                                     <div class="connect-content">
-                                        <div class="connect-form-area">
-                                            <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: #3d3d3d;">Let's Work Together!</h2>
-                                            <!-- TODO: Replace YOUR_FORM_ID with your actual Formspree form ID -->
-                                            <!-- Get your form ID at https://formspree.io after signing up -->
-                                            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="react-form-contents">
-                                        <div class="field-list" style="color: #3d3d3d;">
-                                            <fieldset class="form-item fields name" id="name-field" style="margin-bottom: 20px;">
-                                                <legend>
-                                                    <div class="title">
-                                                        <span>Name</span>
-                                                        <span class="description required">(required)</span>
-                                                    </div>
-                                                </legend>
-                                                <div class="field first-name" style="margin-bottom: 10px;">
-                                                    <label class="caption" for="fname-field" style="color: #3d3d3d;">
-                                                        <div class="caption-text">First Name</div>
-                                                    </label>
-                                                    <input aria-required="true" autocomplete="given-name" id="fname-field" name="fname" type="text" value="" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc;">
-                                                </div>
-                                                <div class="field last-name">
-                                                    <label class="caption" for="lname-field" style="color: #3d3d3d;">
-                                                        <div class="caption-text">Last Name</div>
-                                                    </label>
-                                                    <input aria-required="true" autocomplete="family-name" id="lname-field" name="lname" type="text" value="" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc;">
-                                                </div>
-                                            </fieldset>
-
-                                            <div class="form-item field email required" id="email-field" style="margin-bottom: 20px;">
-                                                <label for="email-input" class="title" style="color: #3d3d3d;">
-                                                    <div>
-                                                        <span>Email</span>
-                                                        <span class="description required">(required)</span>
-                                                    </div>
-                                                </label>
-                                                <input aria-required="true" autocomplete="email" id="email-input" name="email" placeholder="" type="email" value="" required style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc;">
+                                        <div class="contact-info-area">
+                                            <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: #3d3d3d;">Contact Me</h2>
+                                            <p style="font-size: 1.1rem; color: #3d3d3d; margin-bottom: 1.5rem;">Email: <a href="mailto:samyousuf01@gmail.com" style="color: #3d3d3d; text-decoration: underline;">samyousuf01@gmail.com</a></p>
+                                            <p style="font-size: 1rem; color: #3d3d3d; margin-bottom: 0.5rem;">Click below to directly create an email and check out my socials!</p>
+                                            <p style="font-size: 1rem; color: #3d3d3d; margin-bottom: 2rem;">Thank you for checking out my website!</p>
+                                            <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                                                <a href="mailto:samyousuf01@gmail.com" class="contact-social-btn" aria-label="Email">
+                                                    <svg viewBox="0 0 64 64" style="height:28px; width:28px;"><use xlink:href="#email-icon"></use></svg>
+                                                </a>
+                                                <a href="https://www.instagram.com/samyousuf_/" target="_blank" class="contact-social-btn" aria-label="Instagram">
+                                                    <svg viewBox="0 0 64 64"><use xlink:href="#instagram-unauth-icon"></use></svg>
+                                                </a>
+                                                <a href="https://www.tiktok.com/@samyousuf_" target="_blank" class="contact-social-btn" aria-label="TikTok">
+                                                    <svg viewBox="0 0 64 64"><use xlink:href="#tiktok-icon"></use></svg>
+                                                </a>
+                                                <a href="https://www.youtube.com/@samyousuf_" target="_blank" class="contact-social-btn" aria-label="YouTube">
+                                                    <svg viewBox="0 0 64 64"><use xlink:href="#youtube-unauth-icon"></use></svg>
+                                                </a>
                                             </div>
-
-                                            <fieldset class="form-item fields phone" id="phone-field" style="margin-bottom: 20px;">
-                                                <legend style="color: #3d3d3d;">
-                                                    <div class="title">
-                                                        <span>Phone</span>
-                                                    </div>
-                                                </legend>
-                                                <div class="field">
-                                                    <input inputmode="numeric" id="phone-input" name="phone" autocomplete="tel-national" type="text" value="" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc;">
-                                                </div>
-                                            </fieldset>
-
-                                            <div class="form-item field textarea required" id="message-field" style="margin-bottom: 20px;">
-                                                <label for="message-input" class="title" style="color: #3d3d3d;">
-                                                    <div>
-                                                        <span>Message</span>
-                                                        <span class="description required">(required)</span>
-                                                    </div>
-                                                </label>
-                                                <textarea id="message-input" name="message" placeholder="" required style="width: 100%; padding: 10px; margin-top: 5px; min-height: 150px; border: 1px solid #ccc;"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-button-wrapper">
-                                            <button type="submit" class="button sqs-system-button sqs-editable-button form-submit-button sqs-button-element--primary" style="padding: 15px 40px; font-size: 16px; cursor: pointer; background-color: #6b7456; color: white; border: none;">
-                                                <span class="form-submit-button-label">Submit</span>
-                                            </button>
-                                        </div>
-                                    </form>
                                         </div>
                                         <div class="connect-image">
                                             <div style="background-color: #a5b08f; aspect-ratio: 3/4;">
@@ -1221,7 +1369,7 @@
                                             </svg>
                                         </div>
                                     </a>
-                                    <a href="https://www.youtube.com/@samyousuf" target="_blank" class="sqs-svg-icon--wrapper youtube-unauth" aria-label="YouTube">
+                                    <a href="https://www.youtube.com/@samyousuf_" target="_blank" class="sqs-svg-icon--wrapper youtube-unauth" aria-label="YouTube">
                                         <div>
                                             <svg class="sqs-svg-icon--social" viewBox="0 0 64 64" style="width: 24px; height: 24px; fill: white;">
                                                 <use class="sqs-use--icon" xlink:href="#youtube-unauth-icon"></use>
@@ -1233,7 +1381,7 @@
 
                             <!-- Right: Email -->
                             <div class="footer-right">
-                                <h4 style="font-size: 1rem; margin: 0;">contact@samyousuf.com</h4>
+                                <h4 style="font-size: 1rem; margin: 0;">samyousuf01@gmail.com</h4>
                             </div>
                         </div>
                     </div>
@@ -1245,7 +1393,18 @@
 
     <!-- Page Navigation Script -->
     <script>
+        const pageTitles = {
+            home:    'Sam Yousuf',
+            about:   'Sam Yousuf | About',
+            hr:      'Sam Yousuf | H&R',
+            media:   'Sam Yousuf | Media',
+            gallery: 'Sam Yousuf | Gallery',
+            contact: 'Sam Yousuf | Contact'
+        };
+
         function showPage(pageName) {
+            // Update tab title
+            document.title = pageTitles[pageName] || 'Sam Yousuf';
 
             // Hide all pages - use more specific selector
             const pages = document.querySelectorAll('main > .page-section');
