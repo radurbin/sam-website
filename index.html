@@ -28,6 +28,41 @@
             }
         }
 
+        /* Page fade-in animation */
+        @keyframes pageFadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-section.active {
+            animation: pageFadeIn 0.4s ease forwards;
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger children inside reveal containers */
+        .reveal-stagger > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s;    opacity: 1; transform: translateY(0); }
+        .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.1s;  opacity: 1; transform: translateY(0); }
+        .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.2s;  opacity: 1; transform: translateY(0); }
+        .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.3s;  opacity: 1; transform: translateY(0); }
+        .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.4s;  opacity: 1; transform: translateY(0); }
+
         /* Override Squarespace CSS variables */
         :root {
             --siteBackgroundColor: #8b9a7d !important;
@@ -1165,7 +1200,7 @@
                         <div class="content-wrapper">
                             <div class="content">
                                 <div class="about-container">
-                                <div class="about-content">
+                                <div class="about-content reveal-stagger">
                                     <div class="about-image-wrapper">
                                         <img src="website About me page .jpg" alt="Sam Yousuf" class="about-image">
                                     </div>
@@ -1192,7 +1227,7 @@
                     <section data-test="page-section" class="page-section">
                         <div class="content-wrapper">
                             <div class="content">
-                                <div class="hr-grid">
+                                <div class="hr-grid reveal-stagger">
                                     <div class="headshot-item">
                                         <img src="HEADSHOT - SAM YOUSUF.jpg" alt="Sam Yousuf Headshot" style="margin-bottom: 20px;">
                                         <a href="HEADSHOT - SAM YOUSUF.jpg" download class="download-btn">Download Headshot 1</a>
@@ -1220,7 +1255,7 @@
                             <div class="content" style="max-width: 1200px; margin: 0 auto;">
 
                                 <!-- Row 1: Review Only -->
-                                <div class="media-row">
+                                <div class="media-row reveal">
                                     <div class="review-text">
                                         <p>"Sam Yousuf as Seaweed J. Stubbs electrifies every scene he enters. With vocals that slide like butter and moves that defy gravity, he captures the heart of the show's message with both cool confidence and grounded vulnerability."</p>
                                         <p style="margin-top: 10px;">- <em>Warwick Beacon - TBTS Hairspray</em></p>
@@ -1232,7 +1267,7 @@
                                 </div>
 
                                 <!-- Row 2: Video + Review -->
-                                <div class="media-row">
+                                <div class="media-row reveal">
                                     <div class="video-wrapper">
                                         <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/lzmoUqCDDEY?rel=0" title="Sam Yousuf Performance" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                     </div>
@@ -1243,7 +1278,7 @@
                                 </div>
 
                                 <!-- Row 3: Review + Video -->
-                                <div class="media-row">
+                                <div class="media-row reveal">
                                     <div class="review-text">
                                         <p>"Sam Yousuf brought a quiet intensity and vulnerability to Claude, perfectly capturing a young man torn between loyalty and duty."</p>
                                         <p style="margin-top: 10px;">- <em>League of Cincinnati Theatres</em></p>
@@ -1254,7 +1289,7 @@
                                 </div>
 
                                 <!-- Row 4: Review -->
-                                <div class="media-row">
+                                <div class="media-row reveal">
                                     <div class="review-text" style="grid-column: 1 / -1; text-align: center;">
                                         <p>"As Grover, Sam Yousuf supplies praiseworthy comic relief and shows off great stage presence."</p>
                                         <p style="margin-top: 10px;">- <em>Talkin Broadway Cincinnati</em></p>
@@ -1278,7 +1313,7 @@
                     <section data-test="page-section" class="page-section" style="padding: 0; padding-top: 120px; display: flex; flex-direction: column;">
 
                                 <!-- Commercial Section -->
-                                <div class="gallery-section gallery-section--commercial">
+                                <div class="gallery-section gallery-section--commercial reveal">
                                     <span class="gallery-section-title">Commercial</span>
                                     <div class="gallery-grid">
                                         <div class="gallery-item">
@@ -1293,7 +1328,7 @@
                                 </div>
 
                                 <!-- Production Section -->
-                                <div class="gallery-section gallery-section--production">
+                                <div class="gallery-section gallery-section--production reveal">
                                 <span class="gallery-section-title">Production</span>
                                 <div class="gallery-grid">
                                     <div class="gallery-item">
@@ -1361,7 +1396,7 @@
                         <div class="content-wrapper">
                             <div class="content">
                                 <div class="connect-container">
-                                    <div class="connect-content">
+                                    <div class="connect-content reveal-stagger">
                                         <div class="contact-info-area">
                                             <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: #3d3d3d;">Contact Me</h2>
                                             <p style="font-size: 1.1rem; color: #3d3d3d; margin-bottom: 1.5rem;">Email: <a href="mailto:samyousuf01@gmail.com" style="color: #3d3d3d; text-decoration: underline;">samyousuf01@gmail.com</a></p>
@@ -1445,6 +1480,25 @@
 
     </div>
 
+    <!-- Scroll reveal observer -->
+    <script>
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        function initReveal() {
+            document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => {
+                el.classList.remove('visible');
+                revealObserver.observe(el);
+            });
+        }
+    </script>
+
     <!-- Blur any Safari-restored focus on load to prevent stale focus rings -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1495,6 +1549,9 @@
 
             // Scroll to top
             window.scrollTo({top: 0, behavior: 'smooth'});
+
+            // Re-initialise scroll reveal for the new page
+            setTimeout(initReveal, 50);
         }
 
         // Initialize - show home page on load
