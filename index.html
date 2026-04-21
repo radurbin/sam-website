@@ -15,16 +15,134 @@
     <style>
         /* Cover photo */
         .cover-photo {
-            height: 700px;
-            width: auto;
+            width: 100%;
+            height: auto;
+            max-width: 520px;
             display: block;
+            border-radius: 24px;
+            border: 6px solid #841b1a;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.25);
         }
 
-        @media (max-width: 768px) {
-            .cover-photo {
-                height: auto;
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            width: 100%;
+            max-width: 1200px;
+            padding: 120px 20px 60px 20px;
+            box-sizing: border-box;
+            flex-wrap: wrap;
+        }
+
+        .hero-image-wrapper {
+            flex: 0 0 46%;
+            min-width: 280px;
+        }
+
+        .hero-copy {
+            flex: 1 1 46%;
+            min-width: 280px;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: 0.95;
+            margin: 0;
+            letter-spacing: 0.12em;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #841b1a;
+            -webkit-text-stroke: 0.6px #ffffff;
+            text-shadow:
+                0.6px 0.6px 0 #ffffff,
+                -0.6px -0.6px 0 #ffffff,
+                0.6px -0.6px 0 #ffffff,
+                -0.6px 0.6px 0 #ffffff;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.8rem);
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 1rem;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 170px;
+            padding: 1rem 1.8rem;
+            border-radius: 999px;
+            border: 1px solid #ffffff;
+            background-color: #841b1a;
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            text-decoration: none;
+            transition: transform 0.35s ease, background-color 0.35s ease, border-color 0.35s ease;
+        }
+
+        .hero-btn:hover,
+        .hero-btn:focus-visible {
+            background-color: rgba(132, 27, 26, 0.92);
+            border-color: #ffffff;
+            color: #ffffff;
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .hero-copy {
+                align-items: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: clamp(2.6rem, 12vw, 4rem);
+            }
+
+            .hero-subtitle {
+                font-size: clamp(1rem, 3.5vw, 1.4rem);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .hero-grid {
+                gap: 2rem;
+                padding: 30px 16px;
+            }
+
+            .hero-btn {
                 width: 100%;
-                margin-top: 100px;
             }
         }
 
@@ -474,7 +592,7 @@
 
         /* Footer 3-column layout */
         footer {
-            background-color: #1a3d5a;
+            background-color: #841b1a;
             color: white;
             width: 100%;
             margin: 0;
@@ -1186,7 +1304,22 @@
                         <div class="section-background-overlay" style="opacity: 0;"></div>
                         <div class="content-wrapper" style="padding: 0; background-color: #ffffff;">
                             <div class="content" style="display: flex; justify-content: center; background-color: #08263b;">
-                                <img src="Website Cover Photo.jpg" alt="Sam Yousuf" class="cover-photo">
+                                <div class="hero-grid">
+                                    <div class="hero-image-wrapper">
+                                        <img src="Website Cover Photo.jpg" alt="Sam Yousuf" class="cover-photo">
+                                    </div>
+                                    <div class="hero-copy reveal-stagger">
+                                        <h1 class="hero-title">Sam Yousuf</h1>
+                                        <p class="hero-subtitle">Actor • Singer • Musician</p>
+                                        <div class="hero-buttons">
+                                            <a href="#" onclick="showPage('about'); return false;" class="hero-btn">About Me</a>
+                                            <a href="#" onclick="showPage('hr'); return false;" class="hero-btn">Headshot &amp; Résumé</a>
+                                            <a href="#" onclick="showPage('media'); return false;" class="hero-btn">Media</a>
+                                            <a href="#" onclick="showPage('gallery'); return false;" class="hero-btn">Gallery</a>
+                                            <a href="#" onclick="showPage('contact'); return false;" class="hero-btn">Contact Me</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -1234,7 +1367,7 @@
                                     </div>
                                     <div class="headshot-item">
                                         <img src="SAM YOUSUF - RESUME.jpg" alt="Sam Yousuf Resume" style="margin-bottom: 20px;">
-                                        <a href="SAM YOUSUF - RESUME.pdf" download class="download-btn">Download Resume</a>
+                                        <a href="SAM YOUSUF - RESUME.pdf" download class="download-btn">Download Résumé</a>
                                     </div>
                                     <div class="headshot-item single">
                                         <img src="HEADSHOT 2.jpg" alt="Sam Yousuf Headshot 2" style="margin-bottom: 20px;">
