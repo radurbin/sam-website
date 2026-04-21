@@ -111,38 +111,23 @@
             outline: none;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 520px) {
             .hero-grid {
-                flex-direction: column-reverse;
-                text-align: center;
-                padding: 40px 20px;
+                gap: 2rem;
+                padding: 90px 16px 30px 16px;
             }
 
             .hero-copy {
                 align-items: center;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-title {
-                font-size: clamp(2.6rem, 12vw, 4rem);
-            }
-
-            .hero-subtitle {
-                font-size: clamp(1rem, 3.5vw, 1.4rem);
-            }
-        }
-
-        @media (max-width: 520px) {
-            .hero-grid {
-                gap: 2rem;
-                padding: 30px 16px;
+                text-align: center;
             }
 
             .hero-btn {
                 width: 100%;
+            }
+
+            .hero-image-wrapper {
+                margin-left: -10px;
             }
         }
 
@@ -948,7 +933,7 @@
             display: flex;
             gap: 20px;
             justify-content: center;
-            margin-top: 40px;
+            margin-bottom: 40px;
         }
 
         .mobile-menu-social a {
