@@ -114,7 +114,7 @@
         @media (max-width: 520px) {
             .hero-grid {
                 gap: 2rem;
-                padding: 90px 16px 30px 16px;
+                padding: 120px 16px 30px 16px;
             }
 
             .hero-copy {
@@ -205,6 +205,10 @@
         img, video, iframe {
             max-width: 100%;
             height: auto;
+        }
+
+        .header-announcement-bar-wrapper {
+            padding-top:15px !important;
         }
 
         /* Navigation active state */
@@ -1306,7 +1310,10 @@
                     <div class="header-display-mobile" style="display: none;">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding-top: 12px;">
                             <div class="header-title-text">
-                                <a id="site-title-mobile" href="#" onclick="showPage('home'); return false;" style="text-decoration: none; color: inherit; font-weight: normal;">Sam Yousuf</a>
+                            <a id="site-title-mobile" href="#" onclick="showPage('home'); return false;" style="display: inline-flex; align-items: center; text-decoration: none; color: inherit; font-weight: normal;">
+                                <img src="favicon-full.png" alt="SY Logo" style="height: 76px; width: auto; margin-right: -8px; margin-left: -4px;">
+                                Sam Yousuf
+                            </a>
                             </div>
                             <button class="header-burger" onclick="toggleMobileMenu()" aria-label="Open Menu">
                                 <div class="header-burger-inner"></div>
@@ -1319,7 +1326,10 @@
                             <!-- Title -->
                             <div class="header-title" data-animation-role="header-element">
                                 <div class="header-title-text">
-                                    <a id="site-title" href="#" onclick="showPage('home'); return false;" data-animation-role="header-element">Sam Yousuf</a>
+                            <a id="site-title" href="#" onclick="showPage('home'); return false;" data-animation-role="header-element" style="display: inline-flex; align-items: center;">
+                                <img src="favicon-full.png" alt="SY Logo" style="height: 76px; width: auto; margin-right:-8px;">
+                                Sam Yousuf
+                            </a>
                                 </div>
                             </div>
 
