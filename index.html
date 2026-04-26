@@ -287,6 +287,14 @@
         img.img-pos-top {
             object-position: center 30%;
         }
+        
+        img.img-pos-right {
+            object-position: 42% center;
+        }
+
+        img.img-pos-bottom {
+            object-position: center 100%;
+        }
 
         @media (max-width: 768px) {
             img.img-pos-top {
@@ -297,7 +305,7 @@
             }
         }
 
-        .gallery-item:hover img {
+        .gallery-page-item:hover img {
             filter: blur(4px) brightness(0.6);
         }
 
@@ -1122,6 +1130,105 @@
             }
         }
 
+        /* Gallery Styles */
+        .gallery-container {
+            background-color: #08263b;
+            padding: 0px 20px 60px 20px;
+            text-align: center;
+        }
+
+        .gallery-title {
+            color: #ffffff;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            margin: 0 0 40px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+        }
+
+        .gallery-wrapper {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .gallery-scroll {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 16px;
+            padding: 0 20px;
+            padding-bottom: 16px;
+            scroll-padding-left: 20px;
+        }
+
+        .gallery-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .gallery-scroll::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .gallery-scroll::-webkit-scrollbar-thumb {
+            background: #841b1a;
+            border-radius: 4px;
+        }
+
+        .gallery-scroll::-webkit-scrollbar-thumb:hover {
+            background: #a6221f;
+        }
+
+    .scroller-item {
+            margin: 0;
+            padding: 0;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+    .scroller-img {
+            display: block;
+            max-height: 400px;
+            width: 400px;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 900px) {
+        .scroller-img {
+                height: 220px;
+            }
+
+            .gallery-scroll {
+                gap: 12px;
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .gallery-container {
+                padding: 40px 15px;
+            }
+
+            .gallery-title {
+                font-size: clamp(1.5rem, 4vw, 2rem);
+                margin-bottom: 30px;
+            }
+
+        .scroller-img {
+                height: 180px;
+            }
+
+            .gallery-scroll {
+                gap: 10px;
+                padding: 0 10px;
+            }
+        }
+
     </style>
 </head>
 
@@ -1333,13 +1440,48 @@
                                     <div class="about-image-wrapper">
                                         <img src="website About me page .jpg" alt="Sam Yousuf" class="about-image">
                                     </div>
-                                    <div class="about-text">
+                                    <div class="about-text" style="font-size: 20.3px;">
                                         <p class="" style="white-space:pre-wrap;">What's up y'all, welcome to my website. My name is Sam Yousuf, born and raised down South in the Peach state, I am a Georgia boy through and through. I just wrapped up my BFA in Musical Theater at the University of Cincinnati College - Conservatory of Music (CCM). I am a proud first generation Ethiopian - American with a HUGE family that means the world to me. My first love was singing R&B and soul, but it wasn't until I got to high school that I found a lasting love for acting and storytelling. Somehow it was my suburban school's production of Hairspray that opened my eyes to the magic of theater.</p>
                                         <p class="" style="white-space:pre-wrap;">In addition to musical theater, I love film and TV (follow my letterboxd @samyousuf), straight plays, eating, playing every sport under the sun, and making music. At my core I am an activist and a believer in art being the way that I am going to change the world. I love my mom, my sisters, my friends, and I can't wait to get life going in New York City.</p>
                                         <p class="" style="white-space:pre-wrap;">Thanks so much for checking out my website, lots of love!</p>
                                         <a href="#" onclick="showPage('hr'); return false;" class="learn-more-btn">Learn More</a>
                                     </div>
                                 </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- GALLERY SECTION -->
+                    <section data-test="page-section" class="page-section" style="padding: 0;">
+                        <div class="gallery-container reveal-stagger">
+                            <h2 class="gallery-title">Offstage</h2>
+                            <div class="gallery-wrapper">
+                                <div class="gallery-scroll">
+                                    <figure class="scroller-item">
+                                        <img src="FILM STILL.jpg" alt="Gallery Image" class="scroller-img img-pos-bottom">
+                                    </figure>
+                                    <figure class="scroller-item">
+                                        <img src="FRIENDS PIC.jpg" alt="Gallery Image" class="scroller-img">
+                                    </figure>
+                                    <figure class="scroller-item">
+                                        <img src="Kaleidescope.JPEG" alt="Gallery Image" class="scroller-img img-pos-right">
+                                    </figure>
+                                    <figure class="scroller-item">
+                                        <img src="OREGON!.jpg" alt="Gallery Image" class="scroller-img">
+                                    </figure>
+                                    <figure class="scroller-item">
+                                        <img src="ROOMMATES.jpg" alt="Gallery Image" class="scroller-img">
+                                    </figure>
+                                    <figure class="scroller-item">
+                                        <img src="Sisters.jpg" alt="Gallery Image" class="scroller-img">
+                                    </figure>
+                                    <figure class="scroller-item">
+                                        <img src="SUIT.JPEG" alt="Gallery Image" class="scroller-img">
+                                    </figure>
+                                    <figure class="scroller-item">
+                                        <img src="SWEATY three.jpg" alt="Gallery Image" class="scroller-img">
+                                    </figure>
                                 </div>
                             </div>
                         </div>
@@ -1442,11 +1584,11 @@
                                 <div class="gallery-section gallery-section--commercial reveal">
                                     <span class="gallery-section-title">Commercial</span>
                                     <div class="gallery-grid">
-                                        <div class="gallery-item">
+                                        <div class="gallery-item gallery-page-item">
                                             <img src="WEBSITE COMMERCIAL PHOTOS.jpg" alt="Sam Yousuf Commercial">
                                             <div class="gallery-overlay"><p>Sam Yousuf — Commercial</p></div>
                                         </div>
-                                        <div class="gallery-item">
+                                        <div class="gallery-item gallery-page-item">
                                             <img src="B&amp;W WHITE SHIRT.jpg" alt="Sam Yousuf — B&amp;W">
                                             <div class="gallery-overlay"><p>Sam Yousuf — B&amp;W</p></div>
                                         </div>
@@ -1457,55 +1599,55 @@
                                 <div class="gallery-section gallery-section--production reveal">
                                 <span class="gallery-section-title">Production</span>
                                 <div class="gallery-grid">
-                                    <div class="gallery-item">
+                                    <div class="gallery-item gallery-page-item">
                                         <img src="Seaweed in Hairspray (1).jpg" alt="Sam Yousuf as Seaweed in Hairspray">
                                         <div class="gallery-overlay"><p>Sam Yousuf as Seaweed in Hairspray</p></div>
                                     </div>
-                                    <div class="gallery-item">
+                                    <div class="gallery-item gallery-page-item">
                                         <img src="Seaweed in Hairspray (2).jpg" alt="Sam Yousuf as Seaweed in Hairspray">
                                         <div class="gallery-overlay"><p>Sam Yousuf as Seaweed in Hairspray</p></div>
                                     </div>
-                                    <div class="gallery-item">
+                                    <div class="gallery-item gallery-page-item">
                                         <img src="Seaweed in Hairspray (3).jpg" alt="Sam Yousuf as Seaweed in Hairspray">
                                         <div class="gallery-overlay"><p>Sam Yousuf as Seaweed in Hairspray</p></div>
                                     </div>
-                                    <div class="gallery-item">
+                                    <div class="gallery-item gallery-page-item">
                                         <img src="Hair Claude solo.jpg" alt="Sam Yousuf as Claude in Hair" class="img-pos-top img-pos-mobile-25">
                                         <div class="gallery-overlay"><p>Sam Yousuf as Claude in Hair</p></div>
                                     </div>
-                                    <div class="gallery-item">
+                                    <div class="gallery-item gallery-page-item">
                                         <img src="Claude (Hair) 2.JPG" alt="Sam Yousuf as Claude in Hair">
                                         <div class="gallery-overlay"><p>Sam Yousuf as Claude in Hair</p></div>
                                     </div>
-                                    <div class="gallery-item">
+                                    <div class="gallery-item gallery-page-item">
                                         <img src="Claude (Hair) 3.JPG" alt="Sam Yousuf as Claude in Hair">
                                         <div class="gallery-overlay"><p>Sam Yousuf as Claude in Hair</p></div>
                                     </div>
-                                    <div class="gallery-item">
+                                    <div class="gallery-item gallery-page-item">
                                         <img src="Hair. Finale GROUP NUMBER FLESH FAILURES.jpg" alt="Hair Finale - Flesh Failures">
                                         <div class="gallery-overlay"><p>Hair &mdash; Finale: Flesh Failures</p></div>
                                     </div>
-                                    <div class="gallery-item">
+                                    <div class="gallery-item gallery-page-item">
                                         <img src="Grover (TLT).jpg" alt="Sam Yousuf as Grover" class="img-pos-top">
                                         <div class="gallery-overlay"><p>Sam Yousuf as Grover in The Lightning Thief</p></div>
                                     </div>
-                                    <div class="gallery-item">
+                                    <div class="gallery-item gallery-page-item">
                                         <img src="Grover TLT 3.jpg" alt="Sam Yousuf as Grover" class="img-pos-top">
                                         <div class="gallery-overlay"><p>Sam Yousuf as Grover in The Lightning Thief</p></div>
                                     </div>
-                                    <div class="gallery-item">
+                                    <div class="gallery-item gallery-page-item">
                                         <img src="Spelling Bee PIC.JPG" alt="Sam Yousuf in Spelling Bee">
                                         <div class="gallery-overlay"><p>Sam Yousuf in The 25th Annual Putnam County Spelling Bee</p></div>
                                     </div>
-                                    <div class="gallery-item">
+                                    <div class="gallery-item gallery-page-item">
                                         <img src="Wonderful Town.jpg" alt="Sam Yousuf in Wonderful Town">
                                         <div class="gallery-overlay"><p>Sam Yousuf in Wonderful Town</p></div>
                                     </div>
-                                    <div class="gallery-item">
+                                    <div class="gallery-item gallery-page-item">
                                         <img src="30 Years of Stephen Flaherty at Carnegie Hall - PRODUCTION .JPG" alt="30 Years of Stephen Flaherty at Carnegie Hall">
                                         <div class="gallery-overlay"><p>30 Years of Stephen Flaherty at Carnegie Hall</p></div>
                                     </div>
-                                    <div class="gallery-item">
+                                    <div class="gallery-item gallery-page-item">
                                         <img src="Ensemble in Once On This Island @ CCM. - PRODUCTIONJPG.JPG" alt="Ensemble in Once On This Island @ CCM">
                                         <div class="gallery-overlay"><p>Ensemble in Once On This Island @ CCM</p></div>
                                     </div>
