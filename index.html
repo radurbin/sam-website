@@ -382,12 +382,20 @@
 
             .gallery-grid .gallery-item:nth-child(n) { grid-column: span 1; grid-row: span 1; }
             .gallery-grid .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
-            .gallery-grid .gallery-item:nth-child(4) { grid-column: span 2; grid-row: span 1; }
+            .gallery-grid .gallery-item:nth-child(3) { grid-column: span 1; grid-row: span 2; }
+            .gallery-grid .gallery-item:nth-child(4) { grid-column: span 1; grid-row: span 1; }
+            .gallery-grid .gallery-item:nth-child(5) { grid-column: span 1; grid-row: span 2; }
+            .gallery-grid .gallery-item:nth-child(6) { grid-column: span 1; grid-row: span 2; }
             .gallery-grid .gallery-item:nth-child(9) { grid-column: span 2; grid-row: span 1; }
 
             .gallery-section--commercial .gallery-grid {
-                grid-auto-rows: 220px;
+                grid-auto-rows: 200px;
                 gap: 2px;
+                margin-bottom: 0px;
+            }
+
+            .gallery-section--commercial { 
+                padding-bottom: 20px;
             }
         }
 
