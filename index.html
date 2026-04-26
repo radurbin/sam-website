@@ -221,6 +221,7 @@
 
         .gallery-section--commercial {
             background-color: #a0b0c0;
+            padding-bottom: 80px;
         }
 
         .gallery-section--production {
@@ -242,7 +243,7 @@
             font-weight: 300;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            margin: 50px auto 18px;
+            margin: 20px auto 18px;
             padding: 0 20px;
             max-width: 1100px;
             display: block;
@@ -280,6 +281,10 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: filter 0.3s ease;
+        }
+
+        .commercial-item img {
             transition: filter 0.3s ease;
         }
 
@@ -349,12 +354,14 @@
         .gallery-grid .gallery-item:nth-child(14) { grid-column: span 2; grid-row: span 1; }
         .gallery-grid .gallery-item:nth-child(15) { grid-column: span 2; grid-row: span 1; }
 
-        /* Commercial gallery — 2 equal columns, taller rows, full image visible */
+        /* Commercial gallery — 3 equal columns, full image visible */
         .gallery-section--commercial .gallery-grid {
-            grid-template-columns: 1fr 1fr;
-            grid-auto-rows: 520px;
-            max-width: 700px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 450px;
+            max-width: 1100px;
             margin: 0 auto 50px;
+            column-gap: 4px;
+            row-gap: 100px;
         }
         .gallery-section--commercial .gallery-grid .gallery-item {
             grid-column: span 1 !important;
@@ -1598,14 +1605,24 @@
                                 <div class="gallery-section gallery-section--commercial reveal">
                                     <span class="gallery-section-title">Commercial</span>
                                     <div class="gallery-grid">
-                                        <div class="gallery-item gallery-page-item">
+                                        <div class="commercial-item">
                                             <img src="WEBSITE COMMERCIAL PHOTOS.jpg" alt="Sam Yousuf Commercial">
-                                            <div class="gallery-overlay"><p>Sam Yousuf — Commercial</p></div>
                                         </div>
-                                        <div class="gallery-item gallery-page-item">
+                                        <div class="commercial-item">
                                             <img src="B&amp;W WHITE SHIRT.jpg" alt="Sam Yousuf — B&amp;W">
-                                            <div class="gallery-overlay"><p>Sam Yousuf — B&amp;W</p></div>
                                         </div>
+                                        <div class="commercial-item">
+                                        <img src="Website Commercial Photos Playing w necklace.jpg" alt="Sam Yousuf Commercial Playing with necklace">
+                                    </div>
+                                        <div class="commercial-item">
+                                        <img src="Website Commercial Photos - Seated.jpg" alt="Sam Yousuf Commercial Seated">
+                                    </div>
+                                        <div class="commercial-item">
+                                        <img src="Website Commercial Photos - 2.jpg" alt="Sam Yousuf Commercial 2">
+                                    </div>
+                                        <div class="commercial-item">
+                                        <img src="Website Commercial Photos RED SHIRT.jpg" alt="Sam Yousuf Commercial Red Shirt">
+                                    </div>
                                     </div>
                                 </div>
 
