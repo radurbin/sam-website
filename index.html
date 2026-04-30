@@ -305,12 +305,20 @@
             object-position: center 100%;
         }
 
+        img.wide-img {
+            object-position: center 100%;
+        }
+
         @media (max-width: 768px) {
             img.img-pos-top {
                 object-position: center 30%;
             }
             img.img-pos-mobile-25 {
                 object-position: center 25%;
+            }
+            img.wide-img {
+                max-width: 800px;
+                object-position: center 65%;
             }
         }
 
@@ -1562,7 +1570,7 @@
                                         <img src="Family.JPG" alt="Gallery Image" style="width:500px;" class="scroller-img">
                                     </figure>
                                     <figure class="scroller-item">
-                                        <img src="Friends Outside.JPG" alt="Gallery Image" style="width:800px;" class="scroller-img img-pos-bottom">
+                                        <img src="Friends Outside.JPG" alt="Gallery Image" style="width:800px;" class="scroller-img wide-img">
                                     </figure>
                                 </div>
                             </div>
