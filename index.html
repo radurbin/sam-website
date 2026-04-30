@@ -769,6 +769,10 @@
                 line-height: 1.5;
             }
 
+            .about-text {
+                margin-top: 16px;
+            }
+
             .hr-grid {
                 padding: 30px 20px;
                 gap: 30px;
@@ -1245,6 +1249,7 @@
 
             .about-image {
                 margin-left: -5px;
+                box-shadow: 0 15px 15px rgba(0, 0, 0, 0.25);
             }
 
             .connect-image {
@@ -1384,7 +1389,7 @@
                                             <a href="#" onclick="showPage('gallery'); return false;" data-animation-role="header-element">Gallery</a>
                                         </div>
                                         <div class="header-nav-item header-nav-item--collection" data-page="contact">
-                                            <a href="#" onclick="showPage('contact'); return false;" data-animation-role="header-element">Contact</a>
+                                            <a href="#" onclick="showPage('contact'); return false;" data-animation-role="header-element">Connect</a>
                                         </div>
                                     </nav>
                                 </div>
@@ -1438,7 +1443,7 @@
                     <a href="#" onclick="showPageAndCloseMenu('gallery'); return false;">Gallery</a>
                 </div>
                 <div class="header-menu-nav-item" data-page="contact">
-                    <a href="#" onclick="showPageAndCloseMenu('contact'); return false;">Contact</a>
+                    <a href="#" onclick="showPageAndCloseMenu('contact'); return false;">Connect</a>
                 </div>
             </nav>
             <div class="mobile-menu-social">
@@ -1489,7 +1494,7 @@
                                             <a href="#" onclick="showPage('hr'); return false;" class="hero-btn">Headshot &amp; Résumé</a>
                                             <a href="#" onclick="showPage('media'); return false;" class="hero-btn">Media</a>
                                             <a href="#" onclick="showPage('gallery'); return false;" class="hero-btn">Gallery</a>
-                                            <a href="#" onclick="showPage('contact'); return false;" class="hero-btn">Contact Me</a>
+                                            <a href="#" onclick="showPage('contact'); return false;" class="hero-btn">Connect</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1511,10 +1516,11 @@
                                         <img src="website About me page .jpg" alt="Sam Yousuf" class="about-image">
                                     </div>
                                     <div class="about-text" style="font-size: 20.3px;">
-                                        <p class="" style="white-space:pre-wrap;">What's up, y’all! Welcome to my website. My name is Sam Yousuf. Born and raised down South in the Peach state, I am a Georgia boy through and through. I just wrapped up my BFA in Musical Theater at the University of Cincinnati College - Conservatory of Music (CCM). I am a proud first generation Ethiopian-American with a HUGE family that means the world to me. My first love was singing R&B and soul, but it wasn't until I got to high school that I discovered my love for acting and storytelling. Somehow it was my suburban school's production of Hairspray that opened my eyes to the magic of theater.</p>
+                                        <h2 style="font-size: 3.5rem; margin-top: 0; margin-bottom: 1.2rem; color: #841b1a;">About Me</h2>
+                                        <p class="" style="white-space:pre-wrap;">What’s up, y’all! Welcome to my website. My name is Sam Yousuf. Born and raised down South in the Peach state, I am a Georgia boy through and through. I just wrapped up my BFA in Musical Theater at the University of Cincinnati College - Conservatory of Music (CCM). I am a proud first generation Ethiopian-American with a HUGE family that means the world to me. My first love was singing R&B and soul, but it wasn't until I got to high school that I discovered my love for acting and storytelling. Somehow it was my suburban school's production of Hairspray that opened my eyes to the magic of theater.</p>
                                         <p class="" style="white-space:pre-wrap;">In addition to musical theater, I love film and TV (follow my letterboxd @samyousuf), straight plays, eating, playing every sport under the sun, and making music. At my core, I am an activist and a believer in using art as a vessel for making change. I love my mom, my sisters, my friends, and I can't wait to get life going in New York City.</p>
                                         <p class="" style="white-space:pre-wrap;">Thanks so much for checking out my website. Lots of love!</p>
-                                        <a href="#" onclick="showPage('hr'); return false;" class="learn-more-btn">Learn More</a>
+                                        <a href="#" onclick="showPage('media'); return false;" class="learn-more-btn">Learn More</a>
                                     </div>
                                 </div>
                                 </div>
@@ -1532,7 +1538,7 @@
                                         <img src="FILM STILL.jpg" alt="Gallery Image" class="scroller-img img-pos-bottom">
                                     </figure>
                                     <figure class="scroller-item">
-                                        <img src="FRIENDS PIC.jpg" alt="Gallery Image" class="scroller-img">
+                                        <img src="FRIENDS PIC.jpg" alt="Gallery Image" class="scroller-img img-pos-right">
                                     </figure>
                                     <figure class="scroller-item">
                                         <img src="Kaleidescope.jpg" alt="Gallery Image" class="scroller-img img-pos-right">
@@ -1552,6 +1558,12 @@
                                     <figure class="scroller-item">
                                         <img src="SWEATY three.jpg" alt="Gallery Image" class="scroller-img">
                                     </figure>
+                                    <figure class="scroller-item">
+                                        <img src="Family.JPG" alt="Gallery Image" style="width:500px;" class="scroller-img">
+                                    </figure>
+                                    <figure class="scroller-item">
+                                        <img src="Friends Outside.JPG" alt="Gallery Image" style="width:800px;" class="scroller-img img-pos-bottom">
+                                    </figure>
                                 </div>
                             </div>
                         </div>
@@ -1570,7 +1582,7 @@
                                         <img src="HEADSHOT - SAM YOUSUF.jpg" alt="Sam Yousuf Headshot" style="margin-bottom: 20px;">
                                         <a href="HEADSHOT - SAM YOUSUF.jpg" download class="download-btn">Download Headshot 1</a>
                                     </div>
-                                    <div class="headshot-item">
+                                    <div class="headshot-item headshot-photo">
                                         <img src="SAM YOUSUF - RESUME.jpg" alt="Sam Yousuf Resume" style="margin-bottom: 20px;">
                                         <a href="SAM YOUSUF - RESUME.pdf" download class="download-btn">Download Résumé</a>
                                     </div>
@@ -1803,7 +1815,7 @@
                                 <div class="connect-container">
                                     <div class="connect-content reveal-stagger">
                                         <div class="contact-info-area">
-                                            <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: #841b1a;">Contact Me</h2>
+                                            <h2 style="font-size: 3.5rem; margin-top: 0; margin-bottom: 1.5rem; color: #841b1a;">Let's Work Together!</h2>
                                             <p style="font-size: 1.1rem; color: #841b1a; margin-bottom: 1.5rem;">Email: <a href="mailto:samyousuf01@gmail.com" style="color: #841b1a; text-decoration: underline;">samyousuf01@gmail.com</a></p>
                                             <p style="font-size: 1rem; color: #841b1a; margin-bottom: 0.5rem;">Click below to directly create an email and check out my socials!</p>
                                             <p style="font-size: 1rem; color: #841b1a; margin-bottom: 2rem;">Thank you for checking out my website!</p>
@@ -1921,7 +1933,7 @@
             hr:      'Sam Yousuf | H&R',
             media:   'Sam Yousuf | Media',
             gallery: 'Sam Yousuf | Gallery',
-            contact: 'Sam Yousuf | Contact'
+            contact: 'Sam Yousuf | Connect'
         };
 
         function showPage(pageName) {
