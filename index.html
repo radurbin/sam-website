@@ -1176,6 +1176,24 @@
         .gallery-wrapper {
             max-width: 100%;
             margin: 0 auto;
+            position: relative;
+        }
+
+
+        .swipe-hint {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .swipe-hint {
+                display: block;
+                text-align: center;
+                font-size: 0.8rem;
+                color: #888;
+                margin-top: 6px;
+                letter-spacing: 0.05em;
+                margin-bottom: 0px;
+            }
         }
 
         .gallery-scroll {
@@ -1574,6 +1592,7 @@
                                     </figure>
                                 </div>
                             </div>
+                            <p class="swipe-hint">swipe to see more →</p>
                         </div>
                     </section>
                 </article>
