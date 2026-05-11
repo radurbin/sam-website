@@ -2022,14 +2022,14 @@
         // Mobile menu functions
         function seekShowcase(seconds) {
             var wrapper = document.getElementById('showcase-wrapper');
+            var src = 'https://www.youtube.com/embed/vy0Z4gqCYk8?autoplay=1&rel=0&start=' + seconds;
             var existingIframe = wrapper.querySelector('iframe');
             if (existingIframe) {
-                existingIframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'seekTo', args: [seconds, true] }), '*');
-                existingIframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*');
+                existingIframe.src = src;
             } else {
                 var lite = wrapper.querySelector('.yt-lite');
                 var iframe = document.createElement('iframe');
-                iframe.src = 'https://www.youtube.com/embed/vy0Z4gqCYk8?enablejsapi=1&autoplay=1&rel=0&start=' + seconds;
+                iframe.src = src;
                 iframe.frameBorder = '0';
                 iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
                 iframe.allowFullscreen = true;
